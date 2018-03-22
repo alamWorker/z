@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>Zseries统一样式</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		
+		<!--标准mui.css-->
+		<link rel="stylesheet" href="../css/mui.min.css">
+		<link rel="stylesheet" type="text/css" href="../css/mui.picker.min.css" />
+		<!--zapp自定义的css-->
+		<link rel="stylesheet" href="../css/z.app.css"/>
+		
+		
+		<script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+		
+	</head>
+	<body>
+		
+		<!--侧滑菜单容器-->
+		<div id="offCanvasWrapper" class="mui-off-canvas-wrap mui-draggable mui-slide-in">
+			<!--菜单部分-->
+			<!-- mui-off-canvas-left/mui-off-canvas-right -->
+			<aside id="offCanvasSide" class="mui-off-canvas-left">
+				<div id="offCanvasSideScroll" class="mui-scroll-wrapper">
+					<div class="mui-scroll">
+						<div class="icon-center">
+							<a id="icon-icon-contact zlink" zlink="#"><span class="mui-icon mui-icon-contact"></span></a>
+						</div>
+						<ul class="mui-table-view mui-table-view-chevron mui-table-view-inverted">
+							<li class="mui-table-view-cell">
+								<a class="mui-navigate-right zlink" zlink="#">
+									schedule
+								</a>
+							</li>
+							<li class="mui-table-view-cell">
+							</li>
+							<li class="mui-table-view-cell">
+								<a class="mui-navigate-right showmsg" msg="更多功能敬请期待">
+									more
+								</a>
+							</li>
+							<li class="mui-table-view-cell">
+								<a id="offCanvasHide" class="mui-navigate-right">
+									close
+								</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</aside>
+			<div class="mui-inner-wrap">
+				<!-- 浏览器效果 -->
+				<header class="mui-bar mui-bar-nav zseries isn_wechat">
+					<a id="offCanvasShow" class="mui-tab-item mui-pull-left" href="#more">
+						<span class="mui-icon mui-icon-more"></span>
+					</a>
+					<a class="mui-tab-item mui-active" href="#tabbar_main">
+						<span class="mui-title">Z·series</span>
+					</a>
+					<a class="mui-tab-item mui-pull-right" href="#tabbar-schedule-setting">
+						<span class="mui-icon mui-icon-bars"></span>
+					</a>
+				</header>
+				
+				<!-- 微信专享效果 -->
+				<nav class="mui-bar mui-bar-tab zseries is_wechat">
+					<a id="offCanvasToggle" class="mui-tab-item" href="#more">
+						<span class="mui-icon mui-icon-more"></span>
+					</a>
+					<a class="mui-tab-item"></a>
+					<a class="mui-tab-item mui-active" href="#tabbar_main">
+						<span class="mui-tab-label">Z·series</span>
+					</a>
+					<a class="mui-tab-item"></a>
+					<a class="mui-tab-item" href="#tabbar-schedule-setting">
+						<span class="mui-icon mui-icon-bars"></span>
+					</a>
+				</nav>
+				<div id="offCanvasContentScroll" class="mui-content mui-scroll-wrapper">
+					<div class="mui-content mui-scroll">
+						<div id="tabbar_main" class="mui-control-content">
+							main
+						</div>				
+						<!-- 班表设定 -->
+						<div id="tabbar-schedule-setting" class="mui-control-content mui-active">
+							<div class="icon-center">
+								<span class="mui-icon mui-icon-checkmarkempty showmsg" msg="正在保存..."></span>
+							</div>
+							<div class="mui-input-group">
+								<div class="mui-table-view-cell">
+									<span>设定为默认班表</span>
+									<div class="mui-switch mui-switch-blue mui-active">
+										<div class="mui-switch-handle"></div>
+									</div>
+								</div>
+								<div class="mui-input-row">
+									<label>班表名称</label>
+									<input type="text" class="mui-input-clear" placeholder="input">
+								</div>
+								<div class="mui-input-row">
+									<label>周期长度</label>
+									<input type="text" id="period" placeholder="select">
+								</div>
+								<div class="mui-input-row">
+									<label>开始日期</label>
+									<input type="text" id="startdate" class="ztime" data-options='{"type":"date"}' placeholder="select">
+								</div>
+							</div>
+							<h5 class="mui-content-padded add-line">生成周期<i class="mui-icon mui-icon-refreshempty"></i></h5>
+							<div id="lawSelectList" class="mui-input-group">
+								<input type="hidden" id="lawResult" value="">
+							</div>
+							
+							<script>
+								// 生成周期
+								$(".add-line").on("tap",function(){
+									var startTime = $("#startdate").val();
+									var lawSelectList = $("#lawSelectList");
+									
+									var period = $("#period").val();
+									var r = /^\+?[1-9][0-9]*$/;
+									if (!r.test(period))
+									{
+										$("#period").attr("value","");
+										mui.toast('请输入正整数');
+									}
+									
+									if (startTime == '' || typeof(startTime) == 'undefined') {
+										startTime = zTime.getDateByCondition();
+										$("#startTime").attr('value',startTime);
+									}
+									
+									lawSelectList.html('');
+									for ( var i=0; i<period; i++) {
+										lawSelectList.append('<div class="mui-table-view-cell"><a class="lawInfo"><input type="hidden" class="lawResult" value=""><span class="mui-badge mui-badge-warnin">color</span><label>'+zTime.getDateByAdd(startdate.value,i)+'</label></a></div>');
+									}
+								});
+							</script>
+						</div>
+					</div>
+				</div>
+				<!-- off-canvas backdrop -->
+				<div class="mui-off-canvas-backdrop"></div>
+			</div>
+		</div>
+		
+		<script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+		
+		<script src="../js/mui.min.js"></script>
+		<script src="../js/mui.picker.min.js"></script>
+		
+		<script src="../js/z.app.js"></script>
+		<script src="../js/z.time.js"></script>
+		<script src="../js/z.mui.process.js"></script>
+		<script src="../js/z.mui.extend.js"></script>
+		
+		
+		<script>
+			
+		(function($, doc) {
+			$.init();
+			$.ready(function() {
+				var colorPicker = new $.PopPicker();
+				var setData = ""; 
+				for (i = 1; i < 32; i++ ) {
+					setData += "{value: '"+i+"',text: '"+i+"'},"; 
+				}
+				setData = eval("[" + setData + "]");
+				colorPicker.setData(setData);
+				var period = doc.getElementById('period');
+				var checkMuiColor = doc.getElementById('checkMuiColor');
+				var identify = doc.getElementById('identify');
+				period.addEventListener('tap', function(event) {
+					colorPicker.show(function(items) {
+						period.setAttribute('value', items[0].value);
+					});
+				}, false);
+				
+				var lawPicker = new $.PopPicker();
+				var setData = '';
+				setData += "{value: '1', text: '<span class=\"mui-badge mui-badge-warnin\">color</span>', id : '1', color : 'mui-badge-warnin'},"; 
+				setData += "{value: '2', text: '<span class=\"mui-badge mui-badge-primary\">color</span>', id : '2', color : 'mui-badge-primary'},"; 
+				setData = eval("[" + setData + "]");
+				lawPicker.setData(setData);
+				
+				$(document).on('tap','.lawInfo',function(event){
+					lawPicker.show(function(items) {
+						var span_obj = getChildren(event,"span");
+						var input_obj = getChildren(event,"input");
+						input_obj.attr("value",items[0].id);
+						span_obj.attr("class","mui-badge " + items[0].color);
+					});
+				})
+			});
+		})(mui, document);
+		
+		function getChildren(event,children)
+		{
+			return $(event.target).children(children);
+		}
+		</script>
+	</body>
+</html>

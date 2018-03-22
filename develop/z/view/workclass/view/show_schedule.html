@@ -1,0 +1,130 @@
+<html lang="en" class="no-js">
+<head>
+<meta charset="utf-8">
+<meta name="keywords" content="">
+<meta name="description" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<title>班表</title>
+<link rel="stylesheet" href="/static/css/common.css?t={$time}">
+<link rel="stylesheet" href="/static/css/workclass.css?t={$time}">
+<script src="/static/js/jquery.min.js"></script>
+<script src="/static/js/TouchSlide.1.1.js"></script>
+<script src="/static/js/common.js?t={$time}"></script>
+<script src="/static/js/function.js?t={$time}"></script>
+<body>
+	<div class="zbase-block">
+		<div class="z-form">
+			<div class="zbase-line title">
+				<input type="text" value="{$schedule_info.name}" disabled="disabled">
+				<i class="icon set_e" onclick="javascript:window.location.href='/workclass/View/set_schedule?schedule_id={$schedule_info.id}';"></i>
+			</div>
+			<div id="slide-a" class="slide-a">
+				<div class="slide-content">
+					<ul>
+						{volist name="date_list" id="vo"}
+						<li>
+							<div class="z-calendar" date-year="{$vo.year}" date-month="{$vo.month}"></div>
+						</li>
+						{/volist}
+					</ul>
+				</div>
+				<div class="slide-controls" hidden>
+					<ul></ul>
+				</div>
+				<input type="hidden" id="last_page" value="1"/>
+			</div>
+		</div>
+		<div class="zbase-line">
+			<span class="zline-title">{$time|date="Y/m/d", ###}</span>&nbsp;&nbsp;
+			<span class="zline-title sign-text-color{$today_class.sign} no-border" id="today_class">{$today_class.name}</span>
+			<div class="right" id="controller">
+				(<span class="zline-title">{$date_list[2]['year']}</span>
+				/
+				<span class="zline-title">{$date_list[2]['month'] + 1}</span>)
+			</div>
+		</div>
+	</div>
+	<div class="zbase-block">
+		<div class="zbase-line">
+			<span class="zline-title">添加新的班次</span>
+			<i class="icon add_b right" onclick="javascript:window.location.href='/workclass/view/set_class';"></i>
+		</div>
+		{if condition="!empty($class_list)"}
+		<div class="zbase-line z-tab-control" id="class-list">
+			{volist name="$class_list" id="vo"}
+			<a href="/workclass/view/set_class?class_id={$vo.id}" class="control-show-details sign-text-color{$vo.sign}">{$vo.name}</a>
+			{/volist}
+		</div>
+		{/if}
+	</div>
+	<div class="zbase-block">
+		<div class="zbase-line">
+			<span class="zline-title">添加新的班表</span>
+			<i class="icon add_b right" onclick="javascript:window.location.href='/workclass/view/set_schedule';"></i>
+		</div>
+		{if condition="!empty($schedule_list)"}
+		{volist name="$schedule_list" id="vo"}
+		<div class="zbase-line">
+			<a class="z-select status-radio" style="right: 25%;" onclick="javascript:alter_schedule({$vo.id});"></a>
+			<span class="zline-title">{$vo.name}</span>
+			<i class="icon set_b right" onclick="javascript:window.location.href='/workclass/view/set_schedule?schedule_id={$vo.id}';"></i>
+		</div>
+		{/volist}
+		{/if}
+	</div>
+</body>
+<script src="/static/js/z.calendar.js?t={$time}"></script>
+<script src="/static/js/workclass/workclass.js?t={$time}"></script>
+<script>
+	sign_list = [
+		{volist name="$sign_list" id="vo"}
+		"sign-text-color{$vo} no-border",
+		{/volist}
+	];
+	sign_start_date = new Date('{$schedule_info.start_time ?? $date}');
+</script>
+<script type="text/javascript">
+	TouchSlide({
+		slideCell:"#slide-a",
+		titCell:".slide-controls ul", //开启自动分页 autoPage:true ，此时设置 titCell 为导航元素包裹层
+		mainCell:".slide-content ul", 
+		effect:"leftLoop", 
+		autoPage:true,//自动分页
+		autoPlay:false,//自动播放
+		defaultIndex:2,//默认索引位置
+		endFun:function(i,c){
+			var my_date = new Date();
+			var last_page = document.getElementById("last_page").value;
+			document.getElementById("last_page").value = i;
+			
+			var slide_content = document.getElementsByClassName("slide-content")[0];
+			var ul_obj = slide_content.children[0].children[0];
+
+
+			if ( parseInt(i) == 1 || parseInt(last_page) == 1 || parseInt(i) == 2 || parseInt(last_page) == 2 || parseInt(i) == 3 || parseInt(last_page) == 3 || parseInt(i) ==   parseInt(last_page)) {
+				zCalendar_com.set_calendar_controller(i);
+				return true;
+			}
+
+			if ( i == 0 && last_page == 4){
+				var action_num = ul_obj.children.length-2;
+			} else if ( i == 4 && last_page == 0) {
+				var action_num = -(ul_obj.children.length-2);
+			}
+			for (var n=1;n<ul_obj.children.length-1;n++) {
+				var year = ul_obj.children[n].children[0].getAttribute("date-year");
+				var month = ul_obj.children[n].children[0].getAttribute("date-month");
+				var date = zCalendar_com.get_month_by_condition(year, month, '', action_num);
+				my_date.setTime(date);
+				ul_obj.children[n].children[0].setAttribute("date-year", my_date.getFullYear());
+				ul_obj.children[n].children[0].setAttribute("date-month", my_date.getMonth());
+			}
+			zCalendar_com.init_calendar();
+			zCalendar_com.set_calendar_controller(i);
+			zCalendar({start:true, drawing:true});
+		}
+	});
+	zCalendar_com.init_calendar();
+	zCalendar({drawing:true});
+</script>
+</html>

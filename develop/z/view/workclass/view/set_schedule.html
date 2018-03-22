@@ -1,0 +1,103 @@
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="keywords" content="">
+<meta name="description" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<title>设置班表</title>
+
+<link rel="stylesheet" href="/static/css/common.css?t={$time}">
+<link rel="stylesheet" href="/static/css/workclass.css?t={$time}">
+<script src="/static/js/jquery.min.js"></script>
+<script src="/static/js/common.js?t={$time}"></script>
+<script src="/static/js/function.js?t={$time}"></script>
+<script src="/static/js/workclass/workclass.js?t={$time}"></script>
+
+</head>
+<body>
+	<div class="zbase zbase-content">
+		<div class="zbase-block">
+			<div class="z-form">
+				<div class="zbase-line title" {if condition="empty($schedule_info.name)"}hidden{/if}>
+					<input type="text" value="{$schedule_info.name ?? ''}" disabled="disabled">
+					<i class="icon look_r" onclick="javascript:window.location.href='/workclass/View/show_schedule?schedule_id={$schedule_info.id ?? ''}';"></i>
+				</div>
+				<div class="zbase-line">
+					<input type="text" value="{$schedule_info.name ?? ''}" id="name" placeholder="班表">
+				</div>
+				<div class="zbase-line">
+					<label class="z-select" for="start-time"></label>
+					<input type="text" placeholder="周期开始时间" disabled="disabled">
+					<input type="date" value="{$schedule_info.start_time ?? $date}" id="start-time">
+				</div>
+				<div class="zbase-line bottom-border">
+					<input type="text" class="no-border" disabled="disabled" placeholder="班表规律">
+					<i class="icon subtract_b" onclick="javascript:del_tab_control()"></i>
+					<i class="icon add_b" onclick="javascript:add_tab_control()"></i>
+					<input type="hidden" value="{$schedule_info.law ?? ''}" id="law">
+					<div class="z-tab-control" id="control-show">
+						{if condition="empty($law)"}
+						<a class="control-show-details" onclick="javascript:show_select(0)"><input type="hidden" value=""><span>选择班次</span></a>
+						{else /}
+						{volist name="$law" id="vo"}
+						<a class="control-show-details" onclick="javascript:show_select({$key})"><input type="hidden" value="{$vo.id}"><span>{$vo.name}</span></a>
+						{/volist}
+						{/if}
+					</div>
+					<div class="z-tab-control" id="control-select">
+						<a href="/workclass/View/set_class">设置班次</a>
+						{volist name="class_list" id="vo"}
+						<a {if condition="$key == 0"}class="left-border"{/if} onclick="javascript:set_select(this)"><input type="hidden" value="{$vo.id}"><span>{$vo.name}</span></a>
+						{/volist}
+						<input type="hidden" value="0" id="details-obj" readonly>
+						<span class="z-select disable" id="details-disable" onclick="create_prompt('未选择班表规律');"></span>
+					</div>
+				</div>
+				<div class="zbase-line" hidden>
+					<input type="text" value="{$schedule_info.period ?? '1'}" id="period" placeholder="周期长度" readonly>
+				</div>
+				<div class="zbase-line">
+					<a class="z-select status-radio"></a>
+					<input type="text" disabled="disabled" placeholder="默认班表？">
+					{if condition="!isset($schedule_info.default)"}
+					<i class="icon radio_r status-radio" class_replace="icon radio_e status-radio" id="show-radio"></i>
+					{else /}
+					<i class="icon {$schedule_info.default == 1 ? 'radio_r' : 'radio_e'} status-radio" class_replace="icon {$schedule_info.default == 1 ? 'radio_e' : 'radio_r'} status-radio" id="show-radio"></i>
+					{/if}
+					<input type="hidden" value="{$schedule_info.default ?? 1}" id="default">
+				</div>
+				<div class="zbase-line" hidden>
+					<a class="z-select status-radio"></a>
+					<input type="text" disabled="disabled" placeholder="班表共享？">
+					{if condition="empty($schedule_info.status)"}
+					<i class="icon radio_e status-radio" class_replace="icon radio_r status-radio" id="show-radio"></i>
+					{else /}
+					<i class="icon {$schedule_info.status == 2 ? 'radio_r' : 'radio_e'} status-radio" class_replace="icon {$schedule_info.status == 2 ? 'radio_e' : 'radio_r'} status-radio" id="show-radio"></i>
+					{/if}
+					<input type="hidden" value="{if condition="isset($schedule_info.status) && $schedule_info.status == 2"}1{else /}0{/if}" id="status">
+				</div>
+				<input type="hidden" id="id" value="{$schedule_info.id ?? ''}">
+				<a class="z-button" onclick="javascript:schedule_save_ajax(this)">保存</a>
+				{if condition="!empty($schedule_info.id)"}
+				<a class="z-button delete" onclick="javascript:schedule_del_ajax({$schedule_info.id})">删除</a>
+				{/if}
+			</div>
+		</div>
+		<div class="zbase-block">
+			<div class="zbase-line">
+				<span class="zline-title">添加新的班表</span>
+				<i class="icon add_b right" onclick="javascript:window.location.href='/workclass/view/set_schedule';"></i>
+			</div>
+			{if condition="!empty($schedule_list)"}
+			{volist name="$schedule_list" id="vo"}
+			<div class="zbase-line">
+				<span class="zline-title">{$vo.name}</span>
+				<a class="z-select status-radio" style="right: 25%;" {if condition="empty($schedule_info) || (!empty($schedule_info) && $vo.id != $schedule_info.id)"}onclick="javascript:window.location.href='/workclass/view/set_schedule?schedule_id={$vo.id}';"{/if}></a>
+				<i class="icon set_b right" {if condition="empty($schedule_info) || (!empty($schedule_info) && $vo.id != $schedule_info.id)"}onclick="javascript:window.location.href='/workclass/view/set_schedule?schedule_id={$vo.id}';"{/if}></i>
+			</div>
+			{/volist}
+			{/if}
+		</div>
+	</div>
+</body>
+</html>

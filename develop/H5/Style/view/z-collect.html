@@ -1,0 +1,150 @@
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="keywords" content="{$keywords}">
+	<meta name="description" content="{$description}">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+	<title>z collect log(收藏记录)</title>
+	<link rel="stylesheet" href="./../css/z.style.css">
+
+	<script src="./../js/jquery.min.js"></script>
+	<script src="./../js/z.image.js"></script>
+<head>
+<body>
+	<div class="z-base z-show-block">
+
+		<div class="z-hint-block small z-border-dashed-b" hidden>
+			<i class="z-icon z-icon-search-b"></i>
+			<span class="z-label">暂无记录</span>
+		</div>
+
+		<div id="collect-log-bolck">
+			<div class="z-image-article-block">
+				<a href="#" class="z-image-block">
+					<i data-backgroundimgurl="./../image/debug/1.jpg" class="z-i-b-cover"></i>
+				</a>
+				<div class="content">
+					<span class="z-label">Title</span>
+					<span class="z-label">Content</span>
+				</div>
+			</div>
+			<div class="z-image-article-block">
+				<a href="#" class="z-image-block">
+					<i data-backgroundimgurl="./../image/debug/2.jpg" class="z-i-b-cover"></i>
+				</a>
+				<div class="content">
+					<span class="z-label">Title</span>
+					<span class="z-label">Content</span>
+				</div>
+			</div>
+		</div>
+		<div id="copy-collect-log-line" hidden>
+			<div class="z-image-article-block">
+				<a href="?" class="z-image-block copy-data-path">
+					<i data-backgroundimgurl="?" class="z-i-b-cover copy-data-imgpath"></i>
+				</a>
+				<div class="content">
+					<span class="z-label copy-data-title">?</span>
+					<span class="z-label copy-data-content">?</span>
+				</div>
+			</div>
+		</div>
+		<div class="z-block">
+			<div class="z-line">
+				<div class="z-t-center">
+					<div class="z-l-table" onclick="get_list_collect_log();">
+						<i class="z-icon z-icon-down-b"></i>
+						<span class="z-label">点击加载更多</span>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- 更多 -->
+		<div class="z-line-article" id="more-other">
+			<div class="z-line title">
+				<span class="z-label"><i class="z-l-border"></i>More.</span>
+			</div>
+			<div class="z-line z-image-article-line">
+				<a href="#" class="z-image-block">
+					<i data-backgroundimgurl="./../image/debug/1.jpg" class="z-i-b-cover"></i>
+				</a>
+				<a class="content">
+					<span>洗手间马桶的一辈子</span><br/>
+					<span>马桶不知道自己一天两天在干什么....</span><br/>
+					<span>Alam</span>&nbsp;&nbsp;<span>2018/03/01</span>
+				</a>
+				<div class="z-line-icon-r">
+					<i class="z-icon z-icon-right-b"></i>
+				</div>
+			</div>
+		</div>
+		
+		<div id="copy_more_list" hidden>
+			<div class="z-line z-image-article-line">
+				<a href="?" class="z-image-block copy-data-path copy-data-id">
+					<i class="z-i-b-cover copy-data-imgpath"></i>
+				</a>
+				<a class="content">
+					<span class="copy-data-title">?</span><br/>
+					<span class="copy-data-content">?</span><br/>
+					<span class="copy-data-author">?</span>&nbsp;&nbsp;<span class="copy-data-time">?</span>
+				</a>
+				<div class="z-line-icon-r">
+					<i class="z-icon z-icon-right-b"></i>
+				</div>
+			</div>
+		</div>
+		<div class="z-block">
+			<div class="z-line">
+				<div class="z-t-center">
+					<div class="z-l-table" data-submit="0" onclick="get_list_other();">
+						<i class="z-icon z-icon-down-b"></i>
+						<span class="z-label">点击加载更多</span>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="z-float-process z-f-p-rb">
+		<div class="z-f-p-drawer z-f-left">
+			<i class="z-icon z-icon-back-b" onclick="history.back();"></i>
+		</div>
+		<i class="z-icon z-radio z-f-right" value="0" data-wrong="z-icon-add-b" data-selected="z-icon-close-r"></i>
+	</div>
+
+	<script src="./../js/z.js"></script>
+	<script src="../js/z.import.js"></script>
+	<script src="../js/z.loadmore.js"></script>
+	<script>
+		var ajax_data = [
+			{'title':'Title','content':'Content','author':'Alam','time':'2018/03/15','imgpath':['backgroundimgurl','./../image/debug/3.jpg'],'path':'#','id':['id', 3]},
+			{'title':'Title','content':'Content','author':'Alam','time':'2018/03/15','imgpath':['backgroundimgurl','./../image/debug/4.jpg'],'path':'#','id':['id', 4]},
+			{'title':'Title','content':'Content','author':'Alam','time':'2018/03/15','imgpath':['backgroundimgurl','./../image/debug/5.jpg'],'path':'#','id':['id', 5]},
+		];
+
+		var load_more_collect_log = new z_load_more();
+		var get_list_collect_log = function(data) {
+			data = data || ajax_data;
+			if (load_more_collect_log.init_post(event.target)) {
+				// 跑ajax 404 回滚点击状态
+				// load_more_collect_log.restore();
+				load_more_collect_log.end_func = ['cover_init();'];
+				load_more_collect_log.action(data, $("#copy-collect-log-line").children(), $("#collect-log-bolck"));
+			};
+		}
+
+		var load_more_other = new z_load_more();
+		var get_list_other = function(data) {
+			data = data || ajax_data;
+			if (load_more_other.init_post(event.target)) {
+				// 跑ajax 404 回滚点击状态
+				// load_more_other.restore();
+				load_more_other.end_func = ['cover_init();'];
+				load_more_other.action(data, $("#copy_more_list").children(), $("#more-other"));
+			};
+		}
+	</script>
+</body>
+</html>

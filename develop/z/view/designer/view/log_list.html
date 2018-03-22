@@ -1,0 +1,104 @@
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="keywords" content="{$seo_keywords}">
+<meta name="description" content="{$seo_description}">
+<meta name="viewport" content="width=device-width, initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<title>{$seo_title}</title>
+<link rel="stylesheet" href="/static/css/common.css?time={$time}">
+<link rel="stylesheet" href="/static/css/log.css?time={$time}">
+<body>
+<!-- 基本框架 -->
+<div class="zbase" id="z-copy-node-parent">
+	<!-- <div class="z-log" onclick="window.location.href='/designer/View/home?{url_param}'" id="z-copy-node">
+		<div class="img-common left-img">
+			<img {user_avatar}>
+		</div>
+		<div class="center-text">
+			<span>
+				{user_nickname}
+			</span>
+			<span>
+				{comment_content}
+			</span>
+			<span>
+				{comment_date}
+			</span>
+		</div>
+		<div class="img-common right-img">
+			<img {design_img_src}>
+		</div>
+	</div>
+	<hr> -->
+	{if condition="!empty($log_list)"}
+	{volist name="log_list" id="vo"}
+	{if condition="$vo.object eq 2"}
+	<div class="z-log" onclick="window.location.href='/designer/View/home?designer_id={$vo.object_id}'">
+	{else /}
+	<div class="z-log" onclick="window.location.href='/design/View/detail?design_id={$vo.object_id}'">
+	{/if}
+		<div class="img-common left-img">
+			<img _src="{if condition="empty($vo.avatar)"}{:lang("DEFAULT_HEADER")}{else/}{$vo.avatar}{/if}">
+		</div>
+		<div class="center-text">
+			<span>
+				{$vo.nickname}
+			</span>
+			<span>
+			{if condition="$vo.log_sign_type == 4"}
+				{$vo.content ?? ''}
+			{elseif condition="$vo.log_sign_type == 3"}
+				<i class="icon good_r"></i>
+			{else /}
+				<i class="icon favorites_fill"></i>
+			{/if}
+			</span>
+			<span>
+				{$vo.create_time|date="m月d日 H:i", ###}
+			</span>
+		</div>
+		{if condition="$vo.log_sign_type != 2"}
+		<div class="img-common right-img">
+			<img _src="{$vo.src}">
+		</div>
+		{/if}
+	</div>
+	<hr>
+	{/volist}
+	<!-- <a onclick="log_get_list()" class="znull-msg">
+		<div>查看更多</div>
+		<input type="hidden" id="page" value="1">
+	</a> -->
+	{else /}
+	<div class="z-log" style="text-align: center;">
+		<span style="line-height: 500px;">
+			暂时没有消息
+		</span>
+	</div>
+	{/if}
+</div>
+<script src="/static/js/data.js?time={$time}"></script>
+<script src="/static/js/function.js?time={$time}"></script>
+<script>
+/*var log_get_list = function() {
+	var ids = document.getElementById("ids");
+	z_ajax({"func_name":"more_node_copy"}, "/comment/Index/log_get_list", {"ids":ids});
+}
+var more_node_copy = function(data) {
+	var copy_node = document.getElementById("z-copy-node");
+	var copy_node_parent = document.getElementById("z-copy-node-parent");
+	for (var i = 0; i <= data.length; i++) {
+		var copy_node_obj = copy_node.cloneNode(true);
+		var set_html = copy_node_obj.innerHTML;
+
+		for (var key in data[i]) {
+			set_html = set_html.replace(eval("/"+key+"/g"), data[i][key]);
+		}
+
+		copy_node_obj.innerHTML = set_html;
+		copy_node_parent.insertBefore(copy_node_obj, copy_node.nextSibling);
+	};
+}*/
+</script>
+</body>
+</html>

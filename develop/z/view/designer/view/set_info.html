@@ -1,0 +1,44 @@
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="keywords" content="{$seo_keywords}">
+<meta name="description" content="{$seo_description}">
+<meta name="viewport" content="width=device-width, initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<title>{$seo_title}</title>
+<link rel="stylesheet" href="/static/css/common.css?time={$time}">
+<script src="/static/js/jquery.min.js"></script>
+</head>
+<body>
+	<i class="icon set_b z-base-nav-manage" onclick="nav_manage()"></i>
+	<div class="zbase-line z-base-nav">
+		<i class="icon back_b z-line-operate" onclick="javascript:window.history.back();"></i>
+		<i class="icon selected_r z-line-operate" onclick="save_info()"></i>
+	</div>
+	<div class="zbase z-form" style="padding: 10px 0 0 0;">
+		<div class="zbase-line">
+			<input type="text" value="{$designer.name ?? ''}" id="name" maxlength="20" placeholder="Name">
+		</div>
+		<div class="zbase-line">
+			<input type="text" value="{$designer.address ?? ''}" id="address" maxlength="20" placeholder="Address">
+		</div>
+		<div class="zbase-line">
+			<input type="text" value="{$designer.idea ?? ''}" id="idea" maxlength="20" placeholder="Idea">
+		</div>
+		<div class="zbase-line">
+			<input type="text" value="{$designer.style ?? ''}" id="style" maxlength="20" placeholder="Style">
+		</div>
+		<div class="zbase-line" hidden>
+			<input type="text" value="{$designer.sign ?? ''}" id="sign" maxlength="20" placeholder="Sign">
+		</div>
+		<div class="zbase-line">
+			<a class="z-select" onclick="select_radio('is-public', 'public-radio')"></a>
+			<input type="text" disabled="disabled" placeholder="Public ?">
+			<i id="public-radio" class="icon {if condition="!empty($designer['is_public']) && $designer['is_public'] == 1"}radio_r{else/}radio_e{/if} status-radio"></i>
+			<input type="hidden" value="{$designer.is_public ?? ''}" id="is-public">
+		</div>
+	</div>
+<script src="/static/js/function.js?t={$time}"></script>
+<script src="/static/js/data.js?t={$time}"></script>
+<script src="/static/js/designer/data.js?t={$time}"></script>
+</body>
+</html>

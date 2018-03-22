@@ -1,0 +1,306 @@
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="keywords" content="">
+<meta name="description" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<title>模块&nbsp;|&nbsp;控制器</title>
+<link rel="stylesheet" href="css/common.css">
+<link rel="stylesheet" href="css/comment.css">
+<script src="js/TouchSlide.1.1.js"></script>
+<body>
+<!-- 基本框架 -->
+<div class="zbase">
+	<!-- 头部导航 -->
+	<div class="zbase-title">
+		<div class="zbase-title-a">
+			<a href="#"><span class="text-icon left logo">Z</span></a> <!-- 首页 -->
+			<!-- 搜索 -->
+			<form name="form" method="post">
+				<a><span class="text-search" id="text-search">
+					<input type="submit" value=""/>
+					<input type="text" placeholder="Search" value="{$search_content ?? ''}" name="search_content"/>
+				</span></a>
+			</form>
+			<!-- 卖场 -->
+			<a href="#"><img src="images/icon/shop_w.png" class="text-icon right shop"></a>
+			<!-- 社区 -->
+			<a href="#"><img src="images/icon/home_w.png" class="text-icon right community"></a>
+			<!-- 更多 0:收缩 1：展开 -->
+			<a href="javascript:show_more();"><img src="images/icon/back_w.png" src-replace="images/icon/more_w.png" class="text-icon right more" id="more" action-type="1"></a>
+			<!-- 个人中心 -->
+			<a href="#"><img src="images/icon/account_w.png" class="text-icon right account"></a>
+			<!-- 头像 -->
+			<a href="#"><img src="images/default_header.png" class="text-icon right header"></a>
+		</div>
+		<div class="zbase-title-b">
+			<div class="label">
+				<span><a href="#">推荐</a></span>
+				<span class="on"><a href="#">热门</a></span>
+				<span><a href="#">时间</a></span>
+				<span><a href="#">精选</a></span>
+				<span><a href="#">备用</a></span>
+				<span><a href="#">备用</a></span>
+			</div>
+		</div>
+	</div>
+	<!-- 内容模块 -->
+	<div class="zbase-content">
+		<!-- slide-a 多页画廊 -->
+		<div class="zbase-block">
+			<div id="slide-a" class="slide-a">
+				<div class="slide-content">
+					<ul>
+						<li>
+							<a class="pic" href="#"><img src="images/default_header.png" /></a>
+						</li>
+						<li>
+							<a class="pic" href="#"><img src="images/default_header.png"/></a>
+						</li>
+						<li>
+							<a class="pic" href="#"><img src="images/default_header.png"/></a>
+						</li>
+					</ul>
+				</div>
+				<div class="slide-controls">
+					<ul></ul>
+				</div>
+				<div class="slide-a-pageState">
+				</div>
+			</div>
+			<script type="text/javascript">
+				TouchSlide({ 
+					slideCell:"#slide-a",
+					titCell:".slide-controls ul", //开启自动分页 autoPage:true ，此时设置 titCell 为导航元素包裹层
+					mainCell:".slide-content ul", 
+					effect:"leftLoop", 
+					autoPage:true,//自动分页
+					autoPlay:true, //自动播放
+					pageStateCell:".slide-a-pageState"
+				});
+			</script>
+		</div>
+		
+		<!-- slide-b 单封面文章+多页画廊 -->
+		<div class="zbase-block">
+			<div id="slide-b" class="slide-b">
+				<div class="slide-content">
+					<ul>
+						<li>
+							<div>
+								<div class="article-a">
+									<div class="content-link">
+										<i class="icon add_b right-float"></i>
+										<a href="#">
+											<div class="commenter-info">
+												<img src="images/default_header.png">
+												<div>alam</div>
+												<div class="gay">11/01 12:12</div>
+											</div>
+										</a>
+									</div>
+									<div class="article-img">
+										<img src="images/default_header.png">
+									</div>
+									<div class="article-action">
+										<span class="left"><a href="#"><img src="images/icon/favorites_fill.png" src-replace="images/icon/favorites_e.png">66</a></span>
+										<span class="left"><a href="#"><img src="images/icon/comments_e.png">66</a></span>
+										<span class="right"><a href="#"><img src="images/icon/bad_e.png" src-replace="images/icon/bad_b.png">0718&nbsp;&nbsp;</a></span>
+										<span class="right"><a href="#"><img src="images/icon/good_e.png" src-replace="images/icon/good_b.png">0819&nbsp;&nbsp;</a></span>
+									</div>
+									<div class="article-content">
+										<span class="article-details-title">写意&nbsp;|&nbsp;今天的天气真好？&nbsp;只是有点冷罢了</span>
+										<span class="article-details-content">你好！你好? en，今天的天气真好。啊？&nbsp;哦&nbsp;是的</span>
+									</div>
+								</div>
+							</div>
+						</li>
+						<li>
+							<div class="article-a">
+								<div class="content-link">
+									<i class="icon add_b right-float"></i>
+									<a href="#">
+										<div class="commenter-info">
+											<img src="images/default_header.png">
+											<div>alam</div>
+											<div class="gay">11/01 12:12</div>
+										</div>
+									</a>
+								</div>
+								<div class="article-img">
+									<img src="images/default_header.png" style="width: 100%; border-radius: 3px;">
+								</div>
+								<div class="article-action">
+										<span class="left"><a href="#"><img src="images/icon/favorites_fill.png" src-replace="images/icon/favorites_e.png">66</a></span>
+										<span class="left"><a href="#"><img src="images/icon/comments_e.png">66</a></span>
+										<span class="right"><a href="#"><img src="images/icon/bad_e.png" src-replace="images/icon/bad_b.png">0718&nbsp;&nbsp;</a></span>
+										<span class="right"><a href="#"><img src="images/icon/good_e.png" src-replace="images/icon/good_b.png">0819&nbsp;&nbsp;</a></span>
+								</div>
+								<div class="article-content">
+									<span class="article-details-title">写意&nbsp;|&nbsp;今天的天气真好？&nbsp;只是有点冷罢了</span>
+									<span class="article-details-content">你好！你好? en，今天的天气真好。啊？&nbsp;哦&nbsp;是的</span>
+								</div>
+							</div>
+						</li>
+						<li>
+							<div class="article-a">
+								<div class="content-link">
+									<i class="icon add_b right-float"></i>
+									<a href="#">
+										<div class="commenter-info">
+											<img src="images/default_header.png">
+											<div>alam</div>
+											<div class="gay">11/01 12:12</div>
+										</div>
+									</a>
+								</div>
+								<div class="article-img">
+									<img src="images/default_header.png" style="width: 100%; border-radius: 3px;">
+								</div>
+								<div class="article-action">
+										<span class="left"><a href="#"><img src="images/icon/favorites_fill.png" src-replace="images/icon/favorites_e.png">66</a></span>
+										<span class="left"><a href="#"><img src="images/icon/comments_e.png">66</a></span>
+										<span class="right"><a href="#"><img src="images/icon/bad_e.png" src-replace="images/icon/bad_b.png">0718&nbsp;&nbsp;</a></span>
+										<span class="right"><a href="#"><img src="images/icon/good_e.png" src-replace="images/icon/good_b.png">0819&nbsp;&nbsp;</a></span>
+								</div>
+								<div class="article-content">
+									<span class="article-details-title">写意&nbsp;|&nbsp;今天的天气真好？&nbsp;只是有点冷罢了</span>
+									<span class="article-details-content">你好！你好? en，今天的天气真好。啊？&nbsp;哦&nbsp;是的</span>
+								</div>
+							</div>
+						</li>
+					</ul>
+				</div>
+				<div class="slide-controls">
+					<ul></ul>
+				</div>
+			</div>
+			<script type="text/javascript">
+				TouchSlide({ 
+					slideCell:"#slide-b",
+					titCell:".slide-controls ul", //开启自动分页 autoPage:true ，此时设置 titCell 为导航元素包裹层
+					mainCell:".slide-content ul", 
+					effect:"leftLoop", 
+					autoPage:true,//自动分页
+					autoPlay:false //自动播放
+				});
+			</script>
+		</div>
+		
+		<!-- article-a 单封面文章 -->
+		<div class="zbase-block">
+			<div class="article-a">
+				<div class="content-link">
+					<i class="icon add_b right-float"></i>
+					<a href="#">
+						<div class="commenter-info">
+							<img src="images/default_header.png">
+							<div>alam</div>
+							<div class="gay">11/01 12:12</div>
+						</div>
+					</a>
+				</div>
+				<div class="article-img">
+					<a href="#"><img src="images/default_header.png"></a>
+				</div>
+				<div class="article-action">
+					<span class="left"><a href="#"><img src="images/icon/favorites_fill.png" src-replace="images/icon/favorites_e.png">66</a></span>
+					<span class="left"><a href="#"><img src="images/icon/comments_e.png">66</a></span>
+					<span class="right"><a href="#"><img src="images/icon/bad_e.png" src-replace="images/icon/bad_b.png">0718&nbsp;&nbsp;</a></span>
+					<span class="right"><a href="#"><img src="images/icon/good_e.png" src-replace="images/icon/good_b.png">0819&nbsp;&nbsp;</a></span>
+				</div>
+				<div class="article-content">
+					<span class="article-details-title">写意&nbsp;|&nbsp;今天的天气真好？&nbsp;只是有点冷罢了</span>
+					<span class="article-details-content">你好！你好? en，今天的天气真好。啊？&nbsp;哦&nbsp;是的</span>
+				</div>
+			</div>
+		</div>
+		
+		<!-- article-b 滑动画廊 -->
+		<div class="zbase-block">
+			<div class="article-b">
+				<div class="zsink-content">
+					<i class="icon remind_b left title"></i>
+					<div class="">{专题 | 卖猫咪}</div>
+				</div>
+				<div class="trolley-content">
+					<ul id="trolley-slide">
+						<li><img src="images/default_header.png"></li>
+						<li><img src="images/default_header.png"></li>
+						<li><img src="images/default_header.png"></li>
+						<li><img src="images/default_header.png"></li>
+						<li><img src="images/default_header.png"></li>
+						<li><img src="images/default_header.png"></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<script>
+			window.onload=function(){
+				var ad_slide_obj=document.getElementById("trolley-slide");
+				ad_slide_obj.setAttribute("style","width:2000px");
+				var li_arr = ad_slide_obj.children;
+				var add_width = -5;
+				for (var i=0;i<li_arr.length;i++){
+					add_width += ad_slide_obj.offsetHeight/li_arr[i].children[0].naturalHeight * li_arr[i].children[0].naturalWidth;
+					add_width += 5;
+				}
+				ad_slide_obj.setAttribute("style", "width:" + add_width + "px");
+			}
+		</script>
+		
+		<!-- article-c  -->
+		<div class="zbase-block">
+			<div class="article-a">
+				<div class="content-link">
+					<i class="icon add_b right-float"></i>
+					<a href="#">
+						<div class="commenter-info">
+							<img src="images/default_header.png">
+							<div>alam</div>
+							<div class="gay">11/01 12:12</div>
+						</div>
+					</a>
+				</div>
+				<div class="article-img">
+					<img src="images/default_header.png">
+				</div>
+				<div class="article-content">
+					<span class="article-details-title-b" style="font-weight:bold;">这是一只猫咪</span>
+					<span class="article-details-content">简单地描述一下，简单描述简单描述简单描述简单描述简单描述简单描述简单描述简单描述简单描述简单描述简单描述简单描述简单描述简单描述简单描述简单描述简单描述</span>
+					<div class="buy-action">
+						<span class="price">￥66</span>
+						<a href="" class="right">BUY</a>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<!-- 底部填充 -->
+		<div class="zbase-footer">
+			<span>-&nbsp;·&nbsp;底线-&nbsp;·&nbsp;</span>
+		</div>
+	</div>
+	
+	<script>
+		/* more 按钮操作 */
+		function show_more() {
+			var more_obj = document.getElementById("more");
+			var type = more_obj.getAttribute("action-type");
+			var src = more_obj.getAttribute("src");
+			var replace = more_obj.getAttribute("src-replace");
+			var search_obj = document.getElementById("text-search");
+			if (type == "1") {
+				more_obj.setAttribute("action-type", "0");
+				search_obj.setAttribute("style", "right: 142px;");
+			} else {
+				more_obj.setAttribute("action-type", "1");
+				search_obj.setAttribute("style", "right: 74px;");
+			}
+			more_obj.setAttribute("src", replace);
+			more_obj.setAttribute("src-replace", src);
+		}
+	</script>
+</div>
+</body>
+</html>

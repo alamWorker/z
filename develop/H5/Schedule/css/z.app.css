@@ -1,0 +1,48 @@
+/*!
+ * =====================================================
+ * Zapp common
+ * =====================================================
+ */
+
+/* 顶部选项卡 */
+.mui-bar-nav.zseries { height: 40px !important; box-shadow: none !important;}
+.mui-bar-nav.zseries .mui-title { height: 40px !important; color: #929292;}
+.mui-bar-nav.zseries~.mui-content { padding-top: 40px; color: #929292;}
+.mui-bar-nav.mui-bar.zseries .mui-icon { color: #929292;}
+
+/* 底部选项卡 */
+.mui-bar-tab.zseries { height: 40px !important; box-shadow: none !important;}
+.mui-bar-tab.zseries .mui-tab-item { height: 40px !important;}
+.mui-bar-tab.zseries .mui-tab-item .mui-icon { height: 30px !important; }
+.mui-bar-tab.zseries~.mui-content{ padding-bottom: 40px;}
+
+/* 底部选项卡action去除action状态 */
+.zseries .mui-active .mui-tab-label,.zseries .mui-active .mui-icon { color: #929292 !important;}
+
+/* 是否微信浏览器 */
+.is_wechat,.isn_wechat { display: none;}
+
+.icon-center { text-align: center;}
+.icon-center .mui-icon{ font-size: 100px; color: white;}
+
+/* 登录界面 start */
+.zlogin { margin-top: 70px;}
+.zlogin input { text-align: center; border: none; border-bottom: solid 1px black; background-color: #efeff4;}
+/* 登陆界面 end */
+
+/* 班表展示 start */
+.z-calendar-content ul,.z-calendar-title ul { padding: 0; width: 100%; text-align: center;}
+.z-calendar-content ul li, .z-calendar-title ul li { display: inline-block; list-style: none;}
+.z-calendar-title ul li { width: 30%;}
+.z-calendar-content ul { margin: 0;line-height: 38px; background-color: white;}
+.z-calendar-content ul li {width: 14.28%;}
+.z-calendar-header { background-color: #efeff4 !important; border-bottom: solid 1px #efeff4;}
+.z-calendar-icon { font-size: 20px;}
+
+.z-calendar-border {border-bottom: solid 1px rgba(0,0,0,.15);}
+.z-calendar-border-primary {border-bottom: solid 1px #87CEFA;}/*#007aff*/
+.z-calendar-border-success {border-bottom: solid 1px #4cd964;}
+.z-calendar-border-warnin {border-bottom: solid 1px #929292;}/*#f0ad4e*/
+.z-calendar-border-danger {border-bottom: solid 1px #dd524d;}
+.z-calendar-border-purple {border-bottom: solid 1px #8a6de9;}
+/* 班表展示 end */

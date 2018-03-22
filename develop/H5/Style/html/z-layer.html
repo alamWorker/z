@@ -1,0 +1,86 @@
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="keywords" content="{$keywords}">
+	<meta name="description" content="{$description}">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+	<title>z layer</title>
+	<link rel="stylesheet" href="./../css/z.style.css">
+<head>
+<body>
+	<div class="z-base z-show-block">
+		<div class="z-line z-border-dashed-b">
+			<span class="z-label">This is z base block.</span>
+		</div>
+		<div class="z-line">
+			<a onclick="select_demo();" style="color:red;">Create Select layer</a>
+		</div>
+		<div class="z-line">
+			<a onclick="form_demo();" style="color:red;">Create Form layer</a>
+		</div>
+	</div>
+	
+	<div id="update_password" hidden>
+		<div class="z-line">
+			<div class="z-line-icon-l">
+				<i class="z-icon z-icon-code-b"></i>
+			</div>
+			<div class="z-line-icon-r">
+				<i class="z-icon z-icon-skip-r" onclick="opacity_action('send_code_ajax_debug();');" data-actiontime="60"></i>
+			</div>
+			<input type="number" class="z-input-t z-input-int" oninput="if(value.length>6)value=value.slice(0,6)" placeholder="短信验证码"/>
+		</div>
+		<div class="z-line">
+			<div class="z-line-icon-l">
+				<i class="z-icon z-icon-password-b"></i>
+			</div>
+			<input type="password" class="z-input-t z-input-password" maxlength="16" placeholder="重置密码"/>
+			<div class="z-line-icon-r">
+				<i class="z-icon z-radio z-controller-password" value="0" data-wrong="z-icon-look-b" data-selected="z-icon-look-r"></i>
+			</div>
+		</div>
+		<div class="z-line">
+			<div class="z-line-icon-l">
+				<i class="z-icon z-icon-password-r"></i>
+			</div>
+			<input type="password" class="z-input-t z-input-password" maxlength="16" placeholder="确认密码"/>
+			<div class="z-line-icon-r">
+				<i class="z-icon z-radio z-controller-password" value="0" data-wrong="z-icon-look-b" data-selected="z-icon-look-r"></i>
+			</div>
+		</div>
+	</div>
+
+	<script src="./../js/jquery.min.js"></script>
+	<script src="./../js/z.js"></script>
+	<script src="./../js/z.import.js"></script>
+	<script src="./../js/z.layer.js"></script>
+	<script>
+		/* 选项弹框Demo */
+		var select_demo = function() {
+			var data = [
+				{'id' : '1','selected' : 0, 'content' : '广东省', 'attr' : []},
+				{'id' : '2','selected' : 0, 'content' : '福建省', 'attr' : []},
+				{'id' : '3','selected' : 0, 'content' : '湖南省', 'attr' : []},
+				{'id' : '4','selected' : 1, 'content' : '湖北省', 'attr' : []},
+				{'id' : '5','selected' : 0, 'content' : '四川省', 'attr' : []},
+				{'id' : '6','selected' : 0, 'content' : '江西省', 'attr' : []},
+				{'id' : '7','selected' : 0, 'content' : '陕西省', 'attr' : []},
+				{'id' : '8','selected' : 0, 'content' : '山西省', 'attr' : []}
+			];
+			var layer_id = z_layer({'title' : '选择地址', 'id' : 'layer-select', 'callback' : yourcallback, 'select_list' : data});
+			function yourcallback(data) {
+				console.log('Select');
+				console.log(data);
+			}
+		}
+		/* 选项弹框Demo */
+		var form_demo = function() {
+			var layer_id = z_layer({'title' : '修改登录密码', 'id' : 'layer-form', 'form_id' : 'update_password', 'callback' : yourcallback});
+			function yourcallback(data) {
+				console.log('Submit');
+			}
+		}
+		/* 表单弹框Demo */
+	</script>
+</body>
+</html>

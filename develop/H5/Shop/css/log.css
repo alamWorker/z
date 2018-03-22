@@ -1,0 +1,15 @@
+@CHARSET "UTF-8";
+
+/* 消息列表 */
+.z-log { position: relative;}
+
+.z-log .img-common { display: inline-block;}
+
+.z-log .left-img { left: 10px; top: 0px; position: absolute;}
+.z-log .left-img img { width: 48px; height: 48px; border-radius: 3px;}
+.z-log .right-img { right: 10px; top: 0px; position: absolute;}
+.z-log .right-img img { width: 72px; height: 72px;}
+
+.z-log .center-text { margin: 10px 92px 10px 68px; min-height: 72px;}
+.z-log .center-text span { display: block; }
+.z-log .center-text span i { width: 20px; height: 24px; }

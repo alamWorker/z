@@ -1,0 +1,98 @@
+<html lang="en" class="no-js">
+<head>
+<meta charset="utf-8">
+<meta name="keywords" content="">
+<meta name="description" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<title>登录</title>
+<link rel="stylesheet" href="css/common.css">
+<script src="js/TouchSlide.1.1.js"></script>
+<script src="js/z.calendar.new.js"></script>
+<body>
+	<div class="zbase-block">
+		<div id="slide-a" class="slide-a">
+			<div class="slide-content">
+				<ul>
+					<li>
+						<div class="z-calendar" date-year="2017" date-month="8"></div>
+					</li>
+					<li>
+						<div class="z-calendar" date-year="2017" date-month="9"></div>
+					</li>
+					<li>
+						<div class="z-calendar" date-year="2017" date-month="10"></div>
+					</li>
+					<li>
+						<div class="z-calendar" date-year="2017" date-month="11"></div>
+					</li>
+					<li>
+						<div class="z-calendar" date-year="2018" date-month="0"></div>
+					</li>
+				</ul>
+			</div>
+			<div class="slide-controls" hidden>
+				<ul></ul>
+			</div>
+			<input type="hidden" id="last_page" value="1"/>
+		</div>
+	</div>
+	<div class="zbase-block">
+		<div class="class-controls">
+			<span class="primary_b">早班</span>
+			<span class="danger_b">晚班</span>
+			<span class="royal_b">休息</span>
+		</div>
+	</div>
+	<div class="zbase-block">
+		<div class="calendar-controls">
+			<div class="schedule-controls">
+				<a class="right">C班</a>
+				<a class="right">B班</a>
+				<a class="right">A班</a>
+			</div>
+			<span id="select-day">2017/11/4</span>
+			<a id="right class-name">早班</a>
+		</div>
+	</div>
+	<script type="text/javascript">
+		TouchSlide({ 
+			slideCell:"#slide-a",
+			titCell:".slide-controls ul", //开启自动分页 autoPage:true ，此时设置 titCell 为导航元素包裹层
+			mainCell:".slide-content ul", 
+			effect:"leftLoop", 
+			autoPage:true,//自动分页
+			autoPlay:false,//自动播放
+			defaultIndex:2,//默认索引位置
+			endFun:function(i,c){
+				var my_date = new Date();
+				var last_page = document.getElementById("last_page").value;
+				document.getElementById("last_page").value = i;
+				
+				if ( parseInt(i) == 1 || parseInt(last_page) == 1 || parseInt(i) == 2 || parseInt(last_page) == 2 || parseInt(i) == 3 || parseInt(last_page) == 3 || parseInt(i) ==   parseInt(last_page)) {
+					return true;
+				}
+				
+				var slide_content = document.getElementsByClassName("slide-content")[0];
+				var ul_obj = slide_content.children[0].children[0];
+				if ( i == 0 && last_page == 4){
+					var action_num = ul_obj.children.length-2;
+				} else if ( i == 4 && last_page == 0) {
+					var action_num = -(ul_obj.children.length-2);
+				}
+				for (var n=1;n<ul_obj.children.length-1;n++) {
+					var year = ul_obj.children[n].children[0].getAttribute("date-year");
+					var month = ul_obj.children[n].children[0].getAttribute("date-month");
+					var date = zCalendar_com.get_month_by_condition(year, month, '', action_num);
+					my_date.setTime(date);
+					ul_obj.children[n].children[0].setAttribute("date-year", my_date.getFullYear());
+					ul_obj.children[n].children[0].setAttribute("date-month", my_date.getMonth());
+				}
+				zCalendar_com.init_calendar();
+				zCalendar({start:true});
+			}
+		});
+		zCalendar_com.init_calendar();
+		zCalendar();
+	</script>
+</body>
+</html>

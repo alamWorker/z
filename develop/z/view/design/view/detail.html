@@ -1,0 +1,118 @@
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="keywords" content="{$seo_keywords}">
+<meta name="description" content="{$seo_description}">
+<meta name="viewport" content="width=device-width, initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<title>{$seo_title}</title>
+<link rel="stylesheet" href="/static/css/common.css?time={$time}">
+<link rel="stylesheet" href="/static/css/comment.css?time={$time}">
+<script src="/static/js/jquery.min.js"></script>
+<script src="/static/js/TouchSlide.1.1.js"></script>
+</head>
+<body>
+	<div class="zbase">
+		<div class="zbase-content">
+			<div class="content-link">
+				<i class="icon {if condition="empty($fav_de)"}add_b{else/}add_r{/if} right-float fav_designer_{$design.designer_id}" onclick="designer_fav({$design.user_id}, {if condition="empty($fav_de)"}1{else /}0{/if})"></i>
+				<a href="/designer/View/home?designer_id={$design.designer_id}">
+					<div class="commenter-info">
+						<img _src="{if condition="empty($design.avatar)"}{:lang('DEFAULT_HEADER')}{else/}{$design.avatar}{/if}" onerror="img_error(this)">
+						<div>{$design.name}</div>
+						<div class="gay">{$design.create_time|date="Y/m/d H:i", ###}</div>
+					</div>
+				</a>
+			</div>
+			<!-- 顶部轮播 -->
+			
+			<div class="zbase-block">
+				{if condition="!empty($img)"}
+				<div id="slide-a" class="slide-a">
+					<div class="slide-content">
+						<ul class="image">
+							{volist name="img" id="vo"}
+							<li>
+								<a class="pic" href="#"><img _src="{$vo.src}" onerror="img_error(this)"></a>
+							</li>
+							{/volist}
+						</ul>
+					</div>
+					<div class="slide-controls" hidden>
+						<ul></ul>
+					</div>
+					<div class="slide-a-pageState">
+					</div>
+				</div>
+				{/if}
+			</div>
+			<div class="z-sink-content-m">
+				<div>
+					{$design.title}&nbsp;|&nbsp;{$design.intro}<br>
+					{$design.content}
+				</div>
+			</div>
+			<div class="z-sink-content-m">
+				{if condition="empty($comment)"}
+				<hr/>
+				<a href="/comment/View/home?object_id={$design.id}" class="znull-msg">
+					<i class="icon add_b"></i>
+					<div>未有评价，去坐沙发</div>
+				</a>
+				{else /}
+				<span class="gay" onclick="window.location.href='/comment/View/home?object_id={$design.id}'">最新评价({$design.comment})</span>
+				<hr/>
+				{volist name="comment" id="vo"}
+				<div class="content-link">
+					<i class="icon {if condition="empty($vo.assess_id)"}good_b{else/}good_r{/if} right-float" id="comment_assess_{$vo.id}" onclick="comment_assess({$vo.id}, {if condition="empty($vo.assess_id)"}1{else/}0{/if})"></i>
+					<div onclick="window.location.href='/comment/View/home?object_id={$design.id}&parent_id={$vo.id}'">
+						<div class="commenter-info">
+							<img _src="{if condition="empty($vo.avatar)"}{:lang('DEFAULT_HEADER')}{else/}{$vo.avatar}{/if}" onerror="img_error(this)">
+							<div>{$vo.user_nickname ?? 'User~'}</div>
+							<div class="gay">{$vo.create_time|date="m月d日 H:i", ###}</div>
+						</div>
+						<div class="comment-content">
+							<div class="comment-text">
+								{if condition="!empty($vo.parent)"}
+								<div class="comment-parent-text gay">
+									{$vo.parent.user_nickname}：{$vo.parent.content}
+								</div>
+								{/if}
+								<span>
+									{$vo.content ?? 'Content~'}
+								</span>
+							</div>
+						</div>
+					</div>
+				</div>
+				{/volist}
+				{/if}
+			</div>
+		</div>
+		<!-- 底部填充 -->
+		<div class="zbase-footer"></div>
+		<div class="acticle-controller">
+			<div><a href="/comment/View/home?object_id={$design.id}"><i class="icon text_b"><span>{$design.comment}</span></i></a></div>
+			<div><i class="icon {if condition="!empty($assess)"}good_r{else/}good_b{/if}" id="assess_design_{$design.id}" onclick="design_assess({$design.id}, {if condition="!empty($assess)"}0{else/}1{/if})"><span>{$design.assess}</span></i></div>
+			<div><i class="icon {if condition="empty($fav_d)"}favorites_b{else/}favorites_fill{/if}" id="fav_design_{$design.id}" onclick="design_fav({$design.id}, {if condition="empty($fav_d)"}1{else/}0{/if})"><span>{$design.fav}</span></i></div>
+		</div>
+	</div>
+<script src="/static/js/data.js?time={$time}"></script>
+<script src="/static/js/function.js?time={$time}"></script>
+<script src="/static/js/design/function.js?time={$time}"></script>
+<script src="/static/js/design/data.js?time={$time}"></script>
+<script src="/static/js/comment/data.js?time={$time}"></script>
+<script>
+window.onload = function(){
+	TouchSlide({ 
+		slideCell:"#slide-a",
+		titCell:".slide-controls ul", //开启自动分页 autoPage:true ，此时设置 titCell 为导航元素包裹层
+		mainCell:".slide-content ul", 
+		effect:"leftLoop", 
+		autoPage:true,//自动分页
+		autoPlay:false,//自动播放
+		pageStateCell:".slide-a-pageState"
+	});
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,250 @@
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="keywords" content="{$keywords}">
+	<meta name="description" content="{$description}">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+	<title>z set</title>
+	<link rel="stylesheet" href="./../css/z.style.css">
+<head>
+<body>
+	<div class="z-base z-show-block">
+		<div class="z-block">
+			<div class="z-line">
+				<div class="z-line-icon-l">
+					<i class="z-icon z-icon-component-b"></i>
+				</div>
+				<div class="z-line-icon-r">
+					<i class="z-icon z-radio z-drawer" value="1" data-wrong="z-icon-right-r" data-selected="z-icon-down-r"></i>
+				</div>
+				<span class="z-input-t">安全</span>
+				<div class="z-l-drawer">
+					<div class="z-line" onclick="show_alter_password_layer(1);">
+						<div class="z-line-icon-r">
+							<i class="z-icon z-radio z-icon-right-b"></i>
+						</div>
+						<span class="z-input-t">登录密码</span>
+					</div>
+					<div class="z-line" onclick="show_alter_password_layer(2);">
+						<div class="z-line-icon-r">
+							<i class="z-icon z-radio z-icon-right-b"></i>
+						</div>
+						<span class="z-input-t">支付密码</span>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="z-block">
+			<div class="z-line">
+				<div class="z-line-icon-l">
+					<i class="z-icon z-icon-mobile-b"></i>
+				</div>
+				<div class="z-line-icon-r">
+					<i class="z-icon z-radio z-drawer" value="1" data-wrong="z-icon-right-r" data-selected="z-icon-down-r"></i>
+				</div>
+				<span class="z-input-t">手机绑定</span>
+				<div class="z-l-drawer">
+					<div class="z-line">
+						<span class="z-input-t">18814148940</span>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="z-block">
+			<div class="z-line">
+				<div class="z-line-icon-l">
+					<i class="z-icon z-icon-map-b"></i>
+				</div>
+				<div class="z-line-icon-r">
+					<i class="z-icon z-radio z-drawer" value="0" data-wrong="z-icon-right-r" data-selected="z-icon-down-r"></i>
+				</div>
+				<span class="z-input-t">收货地址</span>
+				<div class="z-l-drawer">
+					<div class="z-line" onclick="show_alter_address_layer();">
+						<div class="z-line-icon-r">
+							<i class="z-icon z-radio z-icon-right-b"></i>
+						</div>
+						<span class="z-input-t">西乡后瑞某一条街</span>
+					</div>
+					<div class="z-line" onclick="show_alter_address_layer();">
+						<div class="z-line-icon-r">
+							<i class="z-icon z-radio z-icon-right-b"></i>
+						</div>
+						<span class="z-input-t">罗湖某地</span>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- 浮动导航 START -->
+	<div class="z-float-process z-f-p-rb">
+		<div class="z-f-p-drawer z-f-left">
+			<i class="z-icon z-icon-back-b" onclick="history.back();"></i>
+		</div>
+		<i class="z-icon z-radio z-f-right" value="0" data-wrong="z-icon-add-b" data-selected="z-icon-close-r"></i>
+	</div>
+	<!-- 浮动导航 END -->
+
+	<!-- 隐藏弹框表单 START -->
+	<div hidden>
+		<form id="alter-password-form"><!-- 序列化表单参数ajax提交 $('#update_password').serialize() -->
+			<div class="z-line">
+				<div class="z-line-icon-l">
+					<i class="z-icon z-icon-code-b"></i>
+				</div>
+				<div class="z-line-icon-r">
+					<i class="z-icon z-icon-skip-r" onclick="opacity_action('send_code_ajax_debug();');" data-actiontime="60"></i>
+				</div>
+				<input type="number" class="z-input-t z-input-int" placeholder="短信验证码"/>
+			</div>
+			<div class="z-line">
+				<div class="z-line-icon-l">
+					<i class="z-icon z-icon-password-b"></i>
+				</div>
+				<input type="password" class="z-input-t z-input-password" maxlength="16" placeholder="重置密码"/>
+				<div class="z-line-icon-r">
+					<i class="z-icon z-radio z-controller-password" value="0" data-wrong="z-icon-look-b" data-selected="z-icon-look-r"></i>
+				</div>
+			</div>
+			<div class="z-line">
+				<div class="z-line-icon-l">
+					<i class="z-icon z-icon-password-r"></i>
+				</div>
+				<input type="password" class="z-input-t z-input-password" maxlength="16" placeholder="确认密码"/>
+				<div class="z-line-icon-r">
+					<i class="z-icon z-radio z-controller-password" value="0" data-wrong="z-icon-look-b" data-selected="z-icon-look-r"></i>
+				</div>
+			</div>
+		</form>
+		<form id="alter-pay-password-form"><!-- 序列化表单参数ajax提交 $('#update_password').serialize() -->
+			<div class="z-line">
+				<div class="z-line-icon-l">
+					<i class="z-icon z-icon-code-b"></i>
+				</div>
+				<div class="z-line-icon-r">
+					<i class="z-icon z-icon-skip-r" onclick="opacity_action('send_code_ajax_debug();');" data-actiontime="60"></i>
+				</div>
+				<input type="number" class="z-input-t z-input-int" placeholder="短信验证码"/>
+			</div>
+			<div class="z-line">
+				<div class="z-line-icon-l">
+					<i class="z-icon z-icon-password-b"></i>
+				</div>
+				<input type="password" class="z-input-t z-input-password" maxlength="16" placeholder="重置密码"/>
+				<div class="z-line-icon-r">
+					<i class="z-icon z-radio z-controller-password" value="0" data-wrong="z-icon-look-b" data-selected="z-icon-look-r"></i>
+				</div>
+			</div>
+			<div class="z-line">
+				<div class="z-line-icon-l">
+					<i class="z-icon z-icon-password-r"></i>
+				</div>
+				<input type="password" class="z-input-t z-input-password" maxlength="16" placeholder="确认密码"/>
+				<div class="z-line-icon-r">
+					<i class="z-icon z-radio z-controller-password" value="0" data-wrong="z-icon-look-b" data-selected="z-icon-look-r"></i>
+				</div>
+			</div>
+		</form>
+		<form id="update-address-form"><!-- 序列化表单参数ajax提交 $('#update_password').serialize() -->
+			<div class="z-line" style="font-size:0;">
+				<input type="text" class="z-input-t" placeholder="联系人" style="display:inline-block; width: 40%;"/>
+				<input type="text" class="z-input-t" placeholder="联系电话" style="display:inline-block; width: 60%;"/>
+			</div>
+			<div class="z-line">
+				<div class="z-line-icon-r">
+					<i class="z-icon z-icon-right-b"></i>
+				</div>
+				<input type="text" class="z-input-t" placeholder="省" onclick="address_layer(1);" readonly/>
+			</div>
+			<div class="z-line">
+				<div class="z-line-icon-r">
+					<i class="z-icon z-icon-right-b"></i>
+				</div>
+				<input type="text" class="z-input-t" placeholder="市" onclick="address_layer(2);" readonly/>
+			</div>
+			<div class="z-line">
+				<div class="z-line-icon-r">
+					<i class="z-icon z-icon-right-b"></i>
+				</div>
+				<input type="text" class="z-input-t" placeholder="区" onclick="address_layer(3);" readonly/>
+			</div>
+			<div class="z-line">
+				<input type="text" class="z-input-t" placeholder="详细地址"/>
+			</div>
+		</form>
+	</div>
+	<!-- 隐藏弹框表单 END -->
+
+	<script src="../js/jquery.min.js"></script>
+	<script src="../js/z.js"></script>
+	<script src="../js/z.image.js"></script>
+	<script src="../js/z.import.js"></script>
+	<script src="../js/z.layer.js"></script>
+	<script>
+		var show_alter_password_layer = function(type) {
+			type = (type == undefined) ? 1 : type;
+			$('#password_type').val(type);
+			$('#verify_code').val('');
+			$('#password').val('');
+			$('#submit_password').val('');
+			if (type == 1) {
+				var title = '修改登录密码';
+				var id = 'alter-password-layer';
+				var form_id = 'alter-password-form';
+			} else {
+				var title = '修改支付密码';
+				var id = 'alter-pay-password-layer';
+				var form_id = 'alter-pay-password-form';
+			};
+			var layer_id = z_layer({'title' : title, 'id' : id, 'form_id' : form_id, 'callback' : yourcallback});
+		}
+		var show_alter_address_layer = function() {
+			var layer_id = z_layer({'title' : '修改收货地址', 'id' : 'update-address-layer', 'form_id' : 'update-address-form', 'callback' : yourcallback});
+		}
+		/* 选项弹框Demo */
+		var address_layer = function(type) {
+			var sheng_data = [
+				{'id' : '1','selected' : 0, 'content' : '广东省', 'attr' : []},
+				{'id' : '2','selected' : 0, 'content' : '福建省', 'attr' : []},
+				{'id' : '3','selected' : 0, 'content' : '湖南省', 'attr' : []},
+				{'id' : '4','selected' : 1, 'content' : '湖北省', 'attr' : []},
+				{'id' : '5','selected' : 0, 'content' : '四川省', 'attr' : []},
+				{'id' : '6','selected' : 0, 'content' : '江西省', 'attr' : []},
+				{'id' : '7','selected' : 0, 'content' : '陕西省', 'attr' : []},
+				{'id' : '8','selected' : 0, 'content' : '山西省', 'attr' : []}
+			];
+			var shi_data = [
+				{'id' : '1','selected' : 0, 'content' : '深圳市', 'attr' : []},
+				{'id' : '2','selected' : 0, 'content' : '东莞市', 'attr' : []},
+				{'id' : '3','selected' : 0, 'content' : '广州市', 'attr' : []},
+				{'id' : '4','selected' : 1, 'content' : '汕头市', 'attr' : []},
+			];
+			var qu_data = [
+				{'id' : '1','selected' : 0, 'content' : '罗湖区', 'attr' : []},
+				{'id' : '2','selected' : 0, 'content' : '宝安区', 'attr' : []},
+				{'id' : '3','selected' : 0, 'content' : '龙华区', 'attr' : []},
+				{'id' : '4','selected' : 1, 'content' : '龙岗区', 'attr' : []},
+			];
+			if (type == 1) {
+				var title = '选择地址-省';
+				var id = 'address-layer-sheng';
+				var data = sheng_data;
+			} else if (type == 2) {
+				var title = '选择地址-市';
+				var id = 'address-layer-shi';
+				var data = shi_data;
+			} else {
+				var title = '选择地址-区';
+				var id = 'address-layer-qu';
+				var data = qu_data;
+			}
+			var layer_id = z_layer({'title' : title, 'id' : id, 'callback' : yourcallback, 'select_list' : data});
+		}
+		var yourcallback = function(data) {
+			console.log('Submit');
+			console.log(data);
+		}
+	</script>
+</body>
+</html>

@@ -1,0 +1,25 @@
+@CHARSET "UTF-8";
+
+.select-sign { display:table-cell; text-align: center; width: 1%; border-bottom: 1px solid #EAEAEF;}
+.show-sign { display:inline-block; text-align: center; width: 40px; height: 40px; float: right;}
+.show-sign:first-of-type { margin-right: 4%;;}
+.select-sign i, .show-sign i { display:block; margin: 0 auto 10px auto; width: 20px; height: 20px; border-radius: 20px;}
+
+.sign-color0 { background-color: transparent; border: 1px solid #EAEAEF;}
+.sign-color1 { background-color: #87CEFA; border: 1px solid #87CEFA;}
+.sign-color2 { background-color: #4cd964; border: 1px solid #4cd964;}
+.sign-color3 { background-color: #dd524d; border: 1px solid #dd524d;}
+.sign-color4 { background-color: #8a6de9; border: 1px solid #8a6de9;}
+.sign-color5 { background-color: #FF99CC; border: 1px solid #FF99CC;}
+.sign-color6 { background-color: #929292; border: 1px solid #929292;}
+.sign-color7 { background-color: #666666; border: 1px solid #666666;}
+.sign-text-color0 { color: #EAEAEF !important;}
+.sign-text-color1 { color: #87CEFA !important;}
+.sign-text-color2 { color: #4cd964 !important;}
+.sign-text-color3 { color: #dd524d !important;}
+.sign-text-color4 { color: #8a6de9 !important;}
+.sign-text-color5 { color: #FF99CC !important;}
+.sign-text-color6 { color: #929292 !important;}
+.sign-text-color7 { color: #666666 !important;}
+
+.sign-select { width: 30px !important; height: 30px !important; border-radius: 20px !important;}

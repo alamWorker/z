@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>Zseries统一样式</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		
+		<!--标准mui.css-->
+		<link rel="stylesheet" href="../css/mui.min.css">
+		<link rel="stylesheet" href="../css/mui.picker.min.css" />
+		<!--Zapp自定义的css-->
+		<link rel="stylesheet" href="../css/z.app.css"/>
+	</head>
+	<body>
+		
+		<!--侧滑菜单容器-->
+		<div id="offCanvasWrapper" class="mui-off-canvas-wrap mui-draggable mui-slide-in">
+			<!--菜单部分-->
+			<!-- mui-off-canvas-left/mui-off-canvas-right -->
+			<aside id="offCanvasSide" class="mui-off-canvas-left">
+				<div id="offCanvasSideScroll" class="mui-scroll-wrapper">
+					<div class="icon-center">
+						<a id="icon-icon-contact zlink" zlink="#"><span class="mui-icon mui-icon-contact"></span></a>
+					</div>
+					<ul class="mui-table-view mui-table-view-chevron mui-table-view-inverted">
+						<li class="mui-table-view-cell">
+							<a class="mui-navigate-right zlink" zlink="#">
+								schedule
+							</a>
+						</li>
+						<li class="mui-table-view-cell">
+						</li>
+						<li class="mui-table-view-cell">
+							<a class="mui-navigate-right showmsg" msg="更多功能敬请期待">
+								more
+							</a>
+						</li>
+						<li class="mui-table-view-cell">
+							<a id="offCanvasHide" class="mui-navigate-right">
+								close
+							</a>
+						</li>
+					</ul>
+				</div>
+			</aside>
+			<div class="mui-inner-wrap">
+				<div id="offCanvasContentScroll" class="mui-content mui-scroll-wrapper">
+					<!-- 浏览器效果 -->
+					<header class="mui-bar mui-bar-nav zseries isn_wechat">
+						<a id="offCanvasShow" class="mui-tab-item mui-pull-left" href="#more">
+							<span class="mui-icon mui-icon-more"></span>
+						</a>
+						<a class="mui-tab-item mui-active" href="#tabbar_main">
+							<span class="mui-title">Z·series</span>
+						</a>
+						<a class="mui-tab-item mui-pull-right" href="#tabbar-class-setting">
+							<span class="mui-icon mui-icon-bars"></span>
+						</a>
+					</header>
+					
+					<!-- 微信专享效果 -->
+					<nav class="mui-bar mui-bar-tab zseries is_wechat">
+						<a id="offCanvasToggle" class="mui-tab-item" href="#more">
+							<span class="mui-icon mui-icon-more"></span>
+						</a>
+						<a class="mui-tab-item"></a>
+						<a class="mui-tab-item mui-active" href="#tabbar_main">
+							<span class="mui-tab-label">Z·series</span>
+						</a>
+						<a class="mui-tab-item"></a>
+						<a class="mui-tab-item" href="#tabbar-class-setting">
+							<span class="mui-icon mui-icon-bars"></span>
+						</a>
+					</nav>
+					
+					<div class="mui-content">
+						<div id="tabbar_main" class="mui-control-content">
+							main
+						</div>
+						<!-- 班次设定 -->
+						<div id="tabbar-class-setting" class="mui-control-content mui-active">
+							<div class="icon-center">
+								<span class="mui-icon mui-icon-checkmarkempty showmsg" msg="正在保存..."></span>
+							</div>
+							<div class="mui-input-group">
+								<div class="mui-input-row">
+									<label>班次名称</label>
+									<input type="text" class="mui-input-clear" placeholder="input">
+								</div>
+								<div class="mui-input-row">
+									<label>上班时间</label>
+									<input type="text" id='working' class="ztime" data-options='{"type":"time"}' placeholder="select">
+								</div>
+								<div class="mui-input-row">
+									<label>下班时间</label>
+									<input type="text" id='closed' class="ztime" data-options='{"type":"time"}' placeholder="select">
+								</div>
+								<div class="mui-table-view-cell">
+									<input type="hidden" id="identify" value="mui-badge-warnin">
+									<a id="showUserPicker"><span id="checkMuiColor" class="mui-badge mui-badge-warnin">color</span>颜色标识</a>
+								</div>
+							</div>
+						</div>
+						
+					</div>
+				</div>
+				<!-- off-canvas backdrop -->
+				<div class="mui-off-canvas-backdrop"></div>
+			</div>
+		</div>
+		
+		<script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+		
+		<script src="../js/mui.min.js"></script>
+		<script src="../js/mui.picker.min.js"></script>
+		
+		<script src="../js/z.app.js"></script>
+		<script src="../js/z.mui.process.js"></script>
+		<script src="../js/z.mui.extend.js"></script>
+		<script src="../js/z.mui.color.picker.js"></script>
+	</body>
+</html>

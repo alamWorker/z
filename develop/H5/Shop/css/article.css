@@ -1,0 +1,16 @@
+@CHARSET "UTF-8";
+
+/* 文章css */
+
+.z-article { position:absolute; height: 100%; width: 100%; border: none;}
+.edit-area { width: 100%; position: absolute; top: 0px; bottom: 0px; padding: 10px 0 0 0;}
+.z-upload-cover + .edit-area{ top: 70px;}
+.edit-area textarea { width: 100%; height: 60%; max-height: 600px; border: none; padding: 10px; outline: none; resize: none; font-size: 16px;}
+
+.z-upload-cover { position: absolute; top: 0px; margin: 0 4%; width: 92%;}
+.z-upload-cover div div { width: 50px; height: 50px;}
+.z-upload-cover div div span { display: block; position: absolute; top: 0; width: 50px; height: 50px; line-height: 50px; text-align: center; font-size: 14px; color: white; margin: 10px 0; background-color: rgba(234,234,239,.7); z-index: 664;}
+@media screen and (min-width: 768px) {
+	.z-upload-cover + .edit-area{ top: 110px;}
+	.z-upload-cover div div, .z-upload-cover div div span { height: 100px; line-height: 100px; width: 100px; }
+}

@@ -1,0 +1,8 @@
+
+.login input { padding: 5px 0 5px 40px;}
+.login input[name=account] { background-image: url("/static/images/icon/account_e.png");}
+.login input[name=password] { background-image: url("/static/images/icon/password_e.png");}
+.login input[name=verify] { background-image: url("/static/images/icon/verify_e.png"); }
+input[name=password] + .show-pass { background-image: url("/static/images/icon/browse_e.png");}
+input[name=verify] + .send-code { line-height: 40px; text-align: center; font-size: 16px;}
+input[name=verify] + .action{ background-image: url("/static/images/icon/msg_b.png");}

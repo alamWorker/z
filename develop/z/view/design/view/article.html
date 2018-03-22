@@ -1,0 +1,60 @@
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="keywords" content="{$seo_keywords}">
+<meta name="description" content="{$seo_description}">
+<meta name="viewport" content="width=device-width, initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<title>{$seo_title}</title>
+<link rel="stylesheet" href="/static/css/common.css?time={$time}">
+<link rel="stylesheet" href="/static/css/article.css?time={$time}">
+<script src="/static/js/jquery.min.js"></script>
+</head>
+<body>
+	<i class="icon set_b z-base-nav-manage" onclick="nav_manage()"></i>
+	<div class="zbase-line z-base-nav">
+		<i class="icon back_b z-line-operate" onclick="javascript:window.history.back();"></i>
+		{if condition="!empty($design.id)"}
+		<i class="icon del_b z-line-operate" onclick="del_operate({$design.id})"></i>
+		{/if}
+		<i class="icon add_b z-line-operate" onclick="javascript:document.getElementById('upload_cover_file').click();"></i>
+		<i class="icon selected_r z-line-operate" onclick="save_article()"></i>
+	</div>
+	<div class="zbase">
+		<div class="zbase-block z-article">
+			<div hidden>
+				<form method="post" enctype="multipart/form-data" id="upload_form">
+					<input type="file" name="image" accept="image/*" id="upload_cover_file" onchange="auto_upload_cover()"/>
+					<input type="submit" id="upload_cover_submit"/>
+				</form>
+			</div>
+			{if condition="!empty($design.img)"}
+			<div class="z-upload-cover z-trolley">
+				<div>
+					{volist name="design.img" id="vo"}
+					<div id="img_{$vo.id}" onclick="img_operate({$vo.id})"><img _src="{$vo.src ?? ''}" class='img_line' onerror="img_error(this)">{if condition="$vo.is_main eq 1"}<span id="main-img-span">封面</span>{/if}</div>
+					{/volist}
+					<div class="clean-float" id="end_obj"></div>
+				</div>
+			</div>
+			{/if}
+			<div class="edit-area z-form">
+				<div class="zbase-line">
+					<input type="text" value="{$design.title ?? ''}" id="title" placeholder="Title"/>
+				</div>
+				<div class="zbase-line">
+					<input type="text" value="{$design.intro ?? ''}" id="intro" placeholder="Intro"/>
+				</div>
+				<div class="zbase-line">
+					<textarea rows="10" cols="30" id="content" placeholder="Content">{$design.content ?? ''}</textarea>
+				</div>
+				<input type="text" id="design_id" value="{$design.id ?? ''}" hidden/>
+				<input type="text" id="img_ids" value="{$design.img_ids ?? ''}" hidden/>
+				<input type="text" id="main_img_id" value="{$design.main_img_id ?? ''}" hidden/>
+			</div>
+		</div>
+	</div>
+<script src="/static/js/data.js?time={$time}"></script>
+<script src="/static/js/function.js?time={$time}"></script>
+<script src="/static/js/design/data.js?time={$time}"></script>
+</body>
+</html>

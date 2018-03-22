@@ -1,0 +1,152 @@
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="keywords" content="{$keywords}">
+	<meta name="description" content="{$description}">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+	<title>z gallery(相册)</title>
+	<link rel="stylesheet" href="./../css/z.style.css">
+
+	<script src="./../js/jquery.min.js"></script>
+	<script src="./../js/z.image.js"></script>
+<head>
+<body>
+	<div class="z-layer" onclick="$(this).remove();" hidden>
+		<div class="z-l-destroy"></div>
+		<div class="z-gallery-detail">
+			<div class="z-g-d-child">
+				<img src="./../image/debug/3.jpg" class="z-i-b-width"/>
+			</div>
+		</div>
+	</div>
+	<style>
+	.z-gallery-detail { position: absolute; width: 100%; height: 100%; overflow: scroll;}
+	.z-g-d-child img { position: absolute; top: 0; bottom: 0; margin: auto;}
+	</style>
+	<div class="z-base z-show-block">
+		<div class="z-gallery-block">
+			<div class="z-gallery-child">
+				<a href="#" class="z-image-block">
+					<i data-backgroundimgurl="./../image/debug/1.jpg" data-showlayerurl="./../image/debug/2.jpg" class="z-i-b-cover z-image-show-layer"></i>
+				</a>
+			</div>
+			<div class="z-gallery-child" onclick="console.log('tset');">
+				<a href="#" class="z-image-block">
+					<i data-backgroundimgurl="./../image/debug/2.jpg" class="z-i-b-cover z-image-show-layer"></i>
+				</a>
+			</div>
+			<div class="z-gallery-child">
+				<a href="#" class="z-image-block">
+					<i data-backgroundimgurl="./../image/debug/3.jpg" class="z-i-b-cover z-image-show-layer"></i>
+				</a>
+			</div>
+			<div class="z-gallery-child">
+				<a href="#" class="z-image-block">
+					<i data-backgroundimgurl="./../image/debug/4.jpg" class="z-i-b-cover z-image-show-layer"></i>
+				</a>
+			</div>
+			<div class="z-gallery-child">
+				<a href="#" class="z-image-block">
+					<i data-backgroundimgurl="./../image/debug/5.jpg" class="z-i-b-cover z-image-show-layer"></i>
+				</a>
+			</div>
+			<div class="z-gallery-child">
+				<a href="#" class="z-image-block">
+					<i data-backgroundimgurl="./../image/debug/1.jpg" class="z-i-b-cover z-image-show-layer"></i>
+				</a>
+			</div>
+			<div class="z-gallery-child">
+				<a href="#" class="z-image-block">
+					<i data-backgroundimgurl="./../image/debug/6.jpg" class="z-i-b-cover z-image-show-layer"></i>
+				</a>
+			</div>
+			<div class="z-gallery-child">
+				<a href="#" class="z-image-block">
+					<i data-backgroundimgurl="./../image/debug/2.jpg" class="z-i-b-cover z-image-show-layer"></i>
+				</a>
+			</div>
+			<div class="z-gallery-child">
+				<a href="#" class="z-image-block">
+					<i data-backgroundimgurl="./../image/debug/3.jpg" class="z-i-b-cover z-image-show-layer"></i>
+				</a>
+			</div>
+			<div class="z-gallery-child">
+				<a href="#" class="z-image-block">
+					<i data-backgroundimgurl="./../image/debug/4.jpg" class="z-i-b-cover z-image-show-layer"></i>
+				</a>
+			</div>
+			<div class="z-gallery-child">
+				<a href="#" class="z-image-block">
+					<i data-backgroundimgurl="./../image/debug/5.jpg" class="z-i-b-cover z-image-show-layer"></i>
+				</a>
+			</div>
+			<div class="z-gallery-child">
+				<a href="#" class="z-image-block">
+					<i data-backgroundimgurl="./../image/debug/4.jpg" class="z-i-b-cover z-image-show-layer"></i>
+				</a>
+			</div>
+			<div class="z-gallery-child">
+				<a href="#" class="z-image-block">
+					<i data-backgroundimgurl="./../image/debug/5.jpg" class="z-i-b-cover z-image-show-layer"></i>
+				</a>
+			</div>
+			<div class="z-gallery-child">
+				<a href="#" class="z-image-block">
+					<i data-backgroundimgurl="./../image/debug/6.jpg" class="z-i-b-cover z-image-show-layer"></i>
+				</a>
+			</div>
+			<div class="z-gallery-child">
+				<a href="#" class="z-image-block">
+					<i data-backgroundimgurl="./../image/debug/1.jpg" class="z-i-b-cover z-image-show-layer"></i>
+				</a>
+			</div>
+			<div class="z-gallery-child">
+				<a href="#" class="z-image-block">
+					<i data-backgroundimgurl="./../image/debug/2.jpg" class="z-i-b-cover z-image-show-layer"></i>
+				</a>
+			</div>
+			<div class="z-gallery-child">
+				<a href="#" class="z-image-block">
+					<i data-backgroundimgurl="./../image/debug/3.jpg" class="z-i-b-cover z-image-show-layer"></i>
+				</a>
+			</div>
+			<div class="z-gallery-child">
+				<a href="#" class="z-image-block">
+					<i data-backgroundimgurl="./../image/debug/6.jpg" class="z-i-b-cover z-image-show-layer"></i>
+				</a>
+			</div>
+		</div>
+	</div>
+	<script>
+		var gallery_obj = $(".z-gallery-child");
+		gallery_obj.height($(gallery_obj).width());
+
+		$(".z-image-show-layer").on('click', function(){
+			var div_obj = '<div class="z-layer" onclick="$(this).remove();"><div class="z-l-destroy"></div><div class="z-gallery-detail"><div class="z-g-d-child"><img src="?" class="z-i-b-width"/></div></div></div>';
+			var img_src = $(event.target).data('showlayerurl');
+			if (img_src == undefined || img_src == null) {
+				img_src = $(this).attr('src');
+			};
+			if (img_src == undefined || img_src == null) {
+				img_src = $(this).attr('style').match(/([^(\(\'\'\))]+)(?=\'\))/g);
+			};
+			if (img_src == undefined || img_src == null) {
+				return false;
+			};
+			div_obj = div_obj.replace(/\?/, img_src);
+			$('body').append(div_obj);
+		});
+	</script>
+
+	<div class="z-float-process z-f-p-rb">
+		<div class="z-f-p-drawer z-f-left">
+			<i class="z-icon z-icon-back-b" onclick="history.back();"></i>
+		</div>
+		<i class="z-icon z-radio z-f-right" value="0" data-wrong="z-icon-add-b" data-selected="z-icon-close-r"></i>
+	</div>
+
+	<script src="./../js/z.js"></script>
+	<script src="./../js/z.import.js"></script>
+	<script src="./../js/z.loadmore.js"></script>
+</body>
+</html>

@@ -1,0 +1,100 @@
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="keywords" content="">
+<meta name="description" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<title>模块&nbsp;|&nbsp;控制器</title>
+<link rel="stylesheet" href="css/common.css">
+<script src="js/function.js"></script>
+<body>
+<!-- 基本框架 -->
+<div class="zbase">
+	<div class="z-cover">
+		<img src="images/default_header.png">
+		<div class="zbase-line operate-line">
+			<i class="icon back_b"></i>
+			<i class="icon set_b right"></i>
+			<i class="icon QRcode right"></i>
+		</div>
+		<div class="zbase-line header-line">
+			<img src="images/default_header.png" class="member_header">
+		</div>
+		<div class="zbase-line data-line">
+			<span>深圳</span>
+			<span>大马路</span>
+			<span>街头艺人</span>
+		</div>
+	</div>
+	<div class="zlink-table-base">
+		<div class="zlink-table">
+			<a href="/design/View/publish"><i class="icon add_b"></i></a>
+		</div>
+		<div class="zlink-table">
+			<a href="/design/View/fav_log"><i class="icon favorites_b"></i></a>
+		</div>
+		<div class="zlink-table">
+			<a href="/design/View/assess_log?type=bad"><i class="icon bad_b"></i></a>
+		</div>
+		<div class="zlink-table">
+			<a href="/design/View/assess_log?type=good"><i class="icon good_b"></i></a>
+		</div>
+	</div>
+	<hr/>
+	<div class="zsink-content">
+		<div class="zbase-line">
+			<span>订单（订单）</span>
+			<i class="icon more_b right"></i>
+		</div>
+		<div class="zbase-line">
+			<span>稿费（记录、提现）</span>
+			<i class="icon more_b right"></i>
+		</div>
+		<hr/>
+	</div>
+	<div>
+		<a href="/design/View/publish" class="znull-msg" style="display:none">
+			<i class="icon add_b"></i>
+			<div>你的生活，有点小单调，没意思</div>
+			<hr/>
+		</a>
+		<div class="z-img-block">
+			<img _src="images/design/1.jpg">
+			<span>卫生间&nbsp;|&nbsp;即视感</span>
+		</div>
+		<div class="z-img-block">
+			<img _src="images/design/2.jpg">
+			<span>三脚架&nbsp;|&nbsp;即视感</span>
+		</div>
+		<div class="z-img-block">
+			<img _src="images/design/3.jpg">
+			<span>木头花盆&nbsp;|&nbsp;即视感</span>
+		</div>
+		<div class="z-img-block">
+			<img _src="images/design/4.jpg">
+			<span>手表&nbsp;|&nbsp;即视感</span>
+		</div>
+	</div>
+	<!-- 底部填充 -->
+	<div class="zbase-footer" id="ajax-get-more" is_ajax="0">
+		<span>-&nbsp;·&nbsp;没有更多&nbsp;·&nbsp;-</span>
+	</div>
+</div>
+<script>
+window.onload = function() {
+	img_init();
+	ajax_more_init();
+}
+var ajax_more = function() {
+	var ajax_get_more_obj = document.getElementById("ajax-get-more");
+	if (ajax_get_more_obj.getAttribute("is_ajax") == 1) {
+		return false;
+	};
+	ajax_get_more_obj.setAttribute("is_ajax", "1");
+
+	// start ajax
+	ajax_get_more_obj.setAttribute("is_ajax", "0");
+}
+</script>
+</body>
+</html>

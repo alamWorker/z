@@ -1,0 +1,84 @@
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="keywords" content="">
+<meta name="description" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<title>设置班次</title>
+
+<link rel="stylesheet" href="/static/css/common.css?t={$time}">
+<link rel="stylesheet" href="/static/css/workclass.css?t={$time}">
+<script src="/static/js/jquery.min.js"></script>
+<script src="/static/js/common.js?t={$time}"></script>
+<script src="/static/js/workclass.js?t={$time}"></script>
+
+</head>
+<body>
+	<div class="zbase zbase-content">
+		<div class="zbase-block">
+			<div class="z-form">
+				
+				<div class="zbase-line title" {$class_info.name ?? 'hidden'}>
+					<input type="text" value="{$class_info.name ?? ''}" disabled="disabled">
+				</div>
+				<div class="zbase-line">
+					<input type="text" value="{$class_info.name ?? ''}" id="name" placeholder="班别">
+				</div>
+				<div class="zbase-line">
+					<input type="text" class="no-border" disabled="disabled" placeholder="标记">
+					<input type="hidden" value="{$class_info.sign ?? 1}" id="sign">
+				</div>
+				<div class="zbase-line">
+					<a class="select-sign"><i class="sign-color0 {if condition="(!empty($class_info.sign) && $class_info.sign == 0) || empty($class_info.sign)"}sign-select{/if}" value="0"></i></a>
+					<a class="select-sign"><i class="sign-color1 {if condition="!empty($class_info.sign) && $class_info.sign == 1"}sign-select{/if}" value="1"></i></a>
+					<a class="select-sign"><i class="sign-color2 {if condition="!empty($class_info.sign) && $class_info.sign == 2"}sign-select{/if}" value="2"></i></a>
+					<a class="select-sign"><i class="sign-color3 {if condition="!empty($class_info.sign) && $class_info.sign == 3"}sign-select{/if}" value="3"></i></a>
+					<a class="select-sign"><i class="sign-color4 {if condition="!empty($class_info.sign) && $class_info.sign == 4"}sign-select{/if}" value="4"></i></a>
+					<a class="select-sign"><i class="sign-color5 {if condition="!empty($class_info.sign) && $class_info.sign == 5"}sign-select{/if}" value="5"></i></a>
+					<a class="select-sign"><i class="sign-color6 {if condition="!empty($class_info.sign) && $class_info.sign == 6"}sign-select{/if}" value="6"></i></a>
+					<a class="select-sign"><i class="sign-color7 {if condition="!empty($class_info.sign) && $class_info.sign == 7"}sign-select{/if}" value="7"></i></a>
+				</div>
+				<div class="zbase-line"	hidden>
+					<a class="z-select status-radio"></a>
+					<input type="text" disabled="disabled" placeholder="班次共享？">
+					{if condition="empty($class_info.status)"}
+					<i class="icon radio_e status-radio" class_replace="icon radio_r status-radio" id="show-radio"></i>
+					{else /}
+					<i class="icon {$class_info.status == 2 ? 'radio_r' : 'radio_e'} status-radio" class_replace="icon {$class_info.status == 2 ? 'radio_e' : 'radio_r'} status-radio" id="show-radio"></i>
+					{/if}
+					<input type="hidden" value="{if condition="isset($class_info.status) && $class_info.status == 2"}1{else /}0{/if}" id="status">
+				</div>
+				<div class="zbase-line">
+					<input type="number" value="{if condition="isset($class_info.rank) && !empty($class_info.rank)"}{$class_info.rank}{/if}" id="rank" placeholder="排序，选填">
+				</div>
+				<input type="hidden" id="id" value="{$class_info.id ?? ''}">
+				<a class="z-button" onclick="javascript:class_save_ajax(this)">保存</a>
+			</div>
+		</div>
+		<div class="zbase-block">
+			<div class="zbase-line">
+				<span class="zline-title">添加新的班次</span>
+				<i class="icon add_b right" onclick="javascript:set_class_info();"></i>
+			</div>
+			{if condition="!empty($class_list)"}
+			{volist name="class_list" id="vo"}
+			<div class="zbase-line">
+				{if condition="!empty($vo.name)"}
+				<span class="zline-title">{$vo.name ?? ''}</span>
+				<i class="icon del_r right" onclick="javascript:class_del_ajax({$vo.id ?? ''}, this)"></i>
+				<a class="z-select status-radio" style="right: 25%;" onclick="javascript:set_class_info({$vo.id ?? ''});"></a>
+				<i class="icon set_b right" onclick="javascript:set_class_info({$vo.id ?? ''});"></i>
+				{/if}
+			</div>
+			{/volist}
+			{/if}
+		</div>
+		<div class="zbase-block">
+			<div class="zbase-line">
+				<span class="zline-title">添加新的班表</span>
+				<i class="icon add_b right" onclick="javascript:window.location.href='/workclass/view/set_schedule';"></i>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

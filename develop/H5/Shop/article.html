@@ -1,0 +1,125 @@
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="keywords" content="">
+<meta name="description" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<title>模块&nbsp;|&nbsp;控制器</title>
+<link rel="stylesheet" href="css/common.css">
+<link rel="stylesheet" href="css/comment.css">
+<script src="js/TouchSlide.1.1.js"></script>
+<body>
+	<div class="zbase">
+		<div class="zbase-content">
+			<div class="content-link">
+				<i class="icon add_b right-float" onclick="console.log('关注设计师')"></i>
+				<div class="commenter-info">
+					<img src="images/default_header.jpg">
+					<div>Alam</div>
+					<div class="gay">01/10 17:00</div>
+				</div>
+			</div>
+			<!-- 顶部轮播 -->
+			<div class="zbase-block">
+				<div id="slide-a" class="slide-a">
+					<div class="slide-content">
+						<ul>
+							<li>
+								<a class="pic" href="#"><img src="images/default_header.jpg" /></a>
+							</li>
+							<li>
+								<a class="pic" href="#"><img src="images/default_header.jpg"/></a>
+							</li>
+							<li>
+								<a class="pic" href="#"><img src="images/default_header.jpg"/></a>
+							</li>
+						</ul>
+					</div>
+					<div class="slide-controls" hidden>
+						<ul></ul>
+					</div>
+					<div class="slide-a-pageState">
+					</div>
+				</div>
+			</div>
+			<script type="text/javascript">
+				TouchSlide({ 
+					slideCell:"#slide-a",
+					titCell:".slide-controls ul", //开启自动分页 autoPage:true ，此时设置 titCell 为导航元素包裹层
+					mainCell:".slide-content ul", 
+					effect:"leftLoop", 
+					autoPage:true,//自动分页
+					autoPlay:true,//自动播放
+					pageStateCell:".slide-a-pageState"
+				});
+			</script>
+			<div class="zsink-content">
+				娘古森萨&nbsp;|&nbsp;今天的天气真好？只是有点冷罢了<br>
+				你好！你好？en，今天的天气真好。啊？哦 是的
+			</div>
+			<div class="zsink-content">
+				<span class="gay">最新评价(3)</span>
+				<span class="right"><a href="/comment/View/design_list?design_id={$design.id}">查看更多</a></span>
+				<hr/>
+				<div class="content-link">
+					<i class="icon good_b right-float"></i>
+					<div class="commenter-info">
+						<img src="images/default_header.jpg">
+						<div>Mr.Lin</div>
+						<div class="gay">01/10 18:02</div>
+					</div>
+					<div class="comment-content">
+						<div class="comment-text">
+							<div class="comment-parent-text gay">
+								Mr.Huang：这个页面是什么功能？
+							</div>
+							<span>
+								这个是设计图稿的详情页面！
+							</span>
+						</div>
+					</div>
+				</div>
+				<div class="content-link">
+					<i class="icon good_b right-float"></i>
+					<div class="commenter-info">
+						<img src="images/default_header.jpg">
+						<div>Mr.Lin</div>
+						<div class="gay">01/10 18:01</div>
+					</div>
+					<div class="comment-content">
+						<div class="comment-text">
+							<span>
+								这一片区域是评论摘选。
+							</span>
+						</div>
+					</div>
+				</div>
+				<div class="content-link">
+					<i class="icon good_b right-float"></i>
+					<div class="commenter-info">
+						<img src="images/qrCode.png">
+						<div>Mr.Huang</div>
+						<div class="gay">01/10 18:00</div>
+					</div>
+					<div class="comment-content">
+						<div class="comment-text">
+							<span>
+								这个页面是什么功能？
+							</span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- 底部填充 -->
+		<div class="zbase-footer">
+			<span>----&nbsp;&nbsp;底线&nbsp;&nbsp;----</span>
+		</div>
+		<div class="acticle-controller">
+			<div><i class="icon text_b" onclick="console.log('棒')"><span>465</span></i></div>
+			<div><i class="icon bad_b" onclick="console.log('差')"><span>654</span></i></div>
+			<div><i class="icon favorites_b" onclick="console.log('差')"><span>465</span></i></div>
+		</div>
+	</div>
+</body>
+</html>

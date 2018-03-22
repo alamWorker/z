@@ -1,0 +1,46 @@
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="keywords" content="{$seo_keywords}">
+<meta name="description" content="{$seo_description}">
+<meta name="viewport" content="width=device-width, initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<title>{$seo_title}</title>
+<link rel="stylesheet" href="/static/css/common.css?t={$time}">
+<link rel="stylesheet" href="/static/css/member.css?t={$time}">
+<script src="/static/js/jquery.min.js"></script>
+</head>
+<body>
+	<div class="zbase zbase-content">
+		<div class="zbase-block">
+			<div class="z-line-operate">
+				<div class="icon">
+					<a href="#"><img src="/static/images/icon/account_b.png"></a>
+				</div>
+				<div class="link">
+					<a href="login"><span>登录</span></a>
+					<a><span>|</span></a>
+					<a href="forgot_pass"><span>忘记密码</span></a>
+				</div>
+			</div>
+			<div class="z-form login">
+				<div class="zbase-line">
+					<input type="text" id="account" value="" name="account" placeholder="账号" />
+				</div>
+				<div class="zbase-line">
+					<input type="password" id="password" value="" name="password" placeholder="密码" maxlength="16"/>
+					<i class="show-pass" src-replace="/static/images/icon/browse_b.png" onclick="javascript:show_pass(this);"></i>
+				</div>
+				<div class="zbase-line">
+					<input type="text" id="verify" value="" name="verify" placeholder="验证码" />
+					<i class="send-code action" onclick="javascript:send_verify(this);"></i>
+				</div>
+				<input type="hidden" id="msg_type" value="register" />
+				<a class="z-button" onclick="javascript:submit_ajax(this)">注册</a>
+			</div>
+		</div>
+	</div>
+<script src="/static/js/function.js?t={$time}"></script>
+<script src="/static/js/data.js?t={$time}"></script>
+<script src="/static/js/member.js?t={$time}"></script>
+</body>
+</html>

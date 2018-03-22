@@ -1,0 +1,187 @@
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="keywords" content="{$keywords}">
+	<meta name="description" content="{$description}">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+	<title>z input</title>
+	<link rel="stylesheet" href="./../css/z.style.css">
+	<script src="./../js/jquery.min.js"></script>
+<head>
+<body>
+	<div class="z-base z-show-block">
+		<div class="z-line z-border-dashed-b">
+			<span class="z-label">This is z base block.</span>
+		</div>
+		<div class="z-form">
+			<div class="z-block">
+				<div class="z-line">
+					<i class="z-icon z-icon-process-b"></i>
+					<span class="z-label">Title</span>
+				</div>
+				<div class="z-line">
+					<span class="z-input-t">文本显示框</span>
+				</div>
+
+				<div class="z-line">
+					<input type="text" class="z-input-t" placeholder="Input for string"/>
+				</div>
+				<div class="z-line">
+					<div class="z-line-icon-l">
+						<i class="z-icon z-icon-process-b"></i>
+					</div>
+					<input type="text" class="z-input-t" placeholder="Input for string"/>
+				</div>
+				<div class="z-line">
+					<div class="z-line-icon-r">
+						<i class="z-icon z-icon-process-b"></i>
+					</div>
+					<input type="text" class="z-input-t" placeholder="Input for string"/>
+				</div>
+				
+				<div class="z-line">
+					<input type="number" class="z-input-t z-input-int" placeholder="Input for int"/>
+				</div>
+				<div class="z-line">
+					<input type="text" class="z-input-t z-input-float" placeholder="Input for float"/>
+				</div>
+				<div class="z-line">
+					<input type="password" class="z-input-t z-input-password" maxlength="16" placeholder="Input for password"/>
+					<div class="z-line-icon-r">
+						<i class="z-icon z-radio z-controller-password" value="0" data-wrong="z-icon-look-b" data-selected="z-icon-look-r"></i>
+					</div>
+				</div>
+				<div class="z-line">
+					<div class="z-line-icon-r">
+						<i class="z-icon z-icon-skip-r" onclick="opacity_action('send_code_ajax_debug();');" data-actiontime="60"></i>
+					</div>
+					<!-- maxlength -->
+					<input type="number" class="z-input-t z-input-int" oninput="if(value.length>6)value=value.slice(0,6)" placeholder="Input for code"/>
+				</div>
+
+				<div class="z-line">
+					<input type="date" class="z-input-t"  value="2018-01-01"/>
+				</div>
+
+			</div>
+			<div class="z-block">
+				<span class="z-label"><i class="z-l-border"></i>Link table icons.</span>
+				<div class="z-line">
+					<div class="z-t-center">
+						<div class="z-l-table">
+							<i class="z-icon z-icon-process-b"></i>
+							<span class="z-label">文本</span>
+						</div>
+						<div class="z-l-table">
+							<i class="z-icon z-icon-process-b"></i>
+							<span class="z-label">文本</span>
+						</div>
+						<div class="z-l-table">
+							<i class="z-icon z-icon-process-b"></i>
+							<span class="z-label">文本</span>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="z-block">
+				<div class="z-line">
+					<div class="z-line-icon-l">
+						<i class="z-icon z-icon-process-b"></i>
+					</div>
+					<div class="z-line-icon-r">
+						<i class="z-icon z-radio z-drawer" value="0" data-wrong="z-icon-right-r" data-selected="z-icon-down-r"></i>
+					</div>
+					<span class="z-input-t">More down</span>
+					<div class="z-l-drawer">
+						<div class="z-line">
+							<input type="text" class="z-input-t" placeholder="Input for string">
+						</div>
+						<div class="z-line">
+							<div class="z-line-icon-l">
+								<i class="z-icon z-icon-process-b"></i>
+							</div>
+							<div class="z-line-icon-r">
+								<i class="z-icon z-radio z-drawer" value="1" data-wrong="z-icon-right-r" data-selected="z-icon-down-r"></i>
+							</div>
+							<span class="z-input-t">More down</span>
+							<div class="z-l-drawer">
+								<div class="z-line">
+									<div class="z-line-icon-l">
+										<i class="z-icon z-icon-process-b"></i>
+									</div>
+									<div class="z-line-icon-r">
+										<i class="z-icon z-radio z-icon-right-b"></i>
+									</div>
+									<span class="z-input-t">More down</span>
+								</div>
+								<div class="z-line">
+									<div class="z-line-icon-l">
+										<i class="z-icon z-icon-process-b"></i>
+									</div>
+									<span class="z-input-t">More down</span>
+								</div>
+								<div class="z-line">
+									<div class="z-line-icon-r">
+										<i class="z-icon z-radio z-icon-right-b"></i>
+									</div>
+									<span class="z-input-t">More down</span>
+								</div>
+								<div class="z-line">
+									<input type="text" class="z-input-t" placeholder="Input for string">
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="z-line">
+					<div class="z-line-icon-l">
+						<i class="z-icon z-icon-process-b"></i>
+					</div>
+					<div class="z-line-icon-r">
+						<i class="z-icon z-icon-right-b z-radio" onclick="console.log('href more')"></i>
+					</div>
+					<span class="z-input-t">More</span>
+				</div>
+				<div class="z-line">
+					<span class="z-input-t">Redio</span>
+					<div class="z-line-icon-r">
+						<i class="z-icon z-radio" value="0" data-wrong="z-icon-close-b" data-selected="z-icon-selected-r"></i>
+						<i class="z-icon z-radio" value="1" data-wrong="z-icon-close-b" data-selected="z-icon-selected-r"></i>
+					</div>
+				</div>
+			</div>
+			<div class="z-block">
+				<div class="z-line">
+					<a class="z-buttom">A buttom</a>
+					<a class="z-buttom z-color-r">A buttom</a>
+					<a class="z-buttom z-color-b">A buttom</a>
+				</div>
+				<div class="z-line">
+					<input type="reset" class="z-buttom" value="Input buttom reset"/>
+					<input type="reset" class="z-buttom z-color-r" value="Input buttom reset"/>
+					<input type="submit" class="z-buttom z-color-b" value="Input buttom submit"/>
+					<br/>
+					<input type="reset" class="z-buttom" value="Input buttom reset"/>
+					<input type="reset" class="z-buttom z-color-r" value="Input buttom reset"/>
+					<input type="submit" class="z-buttom z-color-b" value="Input buttom submit"/>
+				</div>
+				<div class="z-line">
+					<submit class="z-buttom">Submit buttom</submit>
+					<submit class="z-buttom z-color-r">Submit buttom</submit>
+					<submit class="z-buttom z-color-b">Submit buttom</submit>
+				</div>
+			</div>
+		</div>
+		<!-- 悬浮抽屉 -->
+		<div class="z-float-process z-f-p-rb">
+			<div class="z-f-p-drawer z-f-left">
+				<i class="z-icon z-icon-back-b" onclick="history.back();"></i>
+				<i class="z-icon z-icon-selected-r" onclick="console.log('selected');"></i>
+			</div>
+			<i class="z-icon z-radio z-f-right" value="0" data-wrong="z-icon-add-b" data-selected="z-icon-close-r"></i>
+		</div>
+	</div>
+	<script src="./../js/z.js"></script>
+	<script src="./../js/z.import.js"></script>
+</body>
+</html>

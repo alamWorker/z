@@ -1,0 +1,92 @@
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="keywords" content="{$seo_keywords}">
+<meta name="description" content="{$seo_description}">
+<meta name="viewport" content="width=device-width, initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<title>{$seo_title}</title>
+<link rel="stylesheet" href="/static/css/common.css?t={$time}">
+<link rel="stylesheet" href="/static/css/comment.css?t={$time}">
+<script src="/static/js/jquery.min.js"></script>
+<script src="/static/js/TouchSlide.1.1.js"></script>
+</head>
+<body>
+	<div class="zbase">
+		<div class="zbase-content" style="padding-bottom: 120px;">
+			<div class="z-sink-content-p">
+				<div class="content-link" style="display:none;" id="copy-block">
+					<i class="icon good_b right-float" id="comment_assess_{comment_id}" onclick="comment_assess({comment_id}, 1)"></i>
+					<div  onclick="alone_msg_operate('{msg_content}', '{eval_function}')" id="comment_{comment_id}">
+						<div class="commenter-info">
+							<img {user_avatar} onerror="img_error(this)">
+							<div>{user_nickname}</div>
+							<div class="gay">{comment_time}</div>
+						</div>
+						<div class="comment-content">
+							<div class="comment-text">
+								<div class="comment-parent-text gay" style="display:{parent_show}">
+									{parent_nickname}：{parent_comment}
+								</div>
+								<span>
+									{comment_content}
+								</span>
+							</div>
+						</div>
+					</div>
+				</div>
+				{if condition="empty($comment)"}
+				<a href="#" class="znull-msg" id="have-no-comment">
+					<i class="icon add_b"></i>
+					<div>未有评价</div>
+				</a>
+				{else /}
+				{volist name="comment" id="vo"}
+				<div class="content-link">
+					<i class="icon {if condition="empty($vo.assess_id)"}good_b{else/}good_r{/if} right-float" id="comment_assess_{$vo.id}" onclick="comment_assess({$vo.id}, {if condition="empty($vo.assess_id)"}1{else/}0{/if})"></i>
+					<div  onclick="{if condition="!empty($user_info) && $user_info['id'] == $vo.user_id"}alone_msg_operate('删除评论', 'comment_del(\'{$vo.id}\')'){else/}alone_msg_operate('回复评论', 'operate_parent({$vo.id}, \'{$vo.nickname ?? 'User~'}\')'){/if}" id="comment_{$vo.id}">
+						<div class="commenter-info">
+							<img _src="{if condition="empty($vo.avatar)"}{:lang('DEFAULT_HEADER')}{else/}{$vo.avatar}{/if}" onerror="img_error(this)">
+							<div>{$vo.nickname ?? 'User~'}</div>
+							<div class="gay">{$vo.create_time|date="m月d日 H:i", ###}</div>
+						</div>
+						<div class="comment-content">
+							<div class="comment-text">
+								{if condition="!empty($vo.parent)"}
+								<div class="comment-parent-text gay">
+									{$vo.parent.parent_nickname}：{$vo.parent.content}
+								</div>
+								{/if}
+								<span>
+									{$vo.content ?? 'Content~'}
+								</span>
+							</div>
+						</div>
+					</div>
+				</div>
+				{/volist}
+				{/if}
+			</div>
+		</div>
+	</div>
+	<div class="comment_parent" style="{if condition="empty($parent)"}display: none;{else/}display: block;{/if}">
+		<span id="parent_object">回复：{$parent.nickname ?? 'User~'}</span>
+		<i class="icon subtract_b right" onclick="operate_parent(0);"></i>
+		<input type="hidden" value="{$parent_id ?? '0'}" id="parent_id">
+	</div>
+	<div class="comment_form">
+		<div class="input-block">
+			<textarea rows="6" cols="30" id="comment_content" placeholder="Comment"></textarea>
+		</div>
+		<div>
+			<i class="icon nav_w right" onclick="comment_save({$object_id})"></i>
+			<input type="hidden" value="{$object}" id="object">
+			<input type="hidden" value="{$object_id}" id="object_id">
+		</div>
+	</div>
+	<style>
+	</style>
+<script src="/static/js/data.js?time={$time}"></script>
+<script src="/static/js/function.js?time={$time}"></script>
+<script src="/static/js/comment/data.js?time={$time}"></script>
+</body>
+</html>
